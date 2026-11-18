@@ -1,0 +1,283 @@
+{
+  "encoder": {
+    "row": "B",
+    "size": "large",
+    "seed": 0,
+    "data_frac": 1.0
+  },
+  "name": "B_large_seed0",
+  "feat_dim": 384,
+  "probes": [
+    {
+      "fraction": 0.01,
+      "draw": 0,
+      "probe": "knn",
+      "acc": 0.8581481481481481,
+      "n_train": 216,
+      "k": 16
+    },
+    {
+      "fraction": 0.01,
+      "draw": 0,
+      "probe": "linear_svm",
+      "acc": 0.8659259259259259,
+      "n_train": 216
+    },
+    {
+      "fraction": 0.01,
+      "draw": 0,
+      "probe": "rbf_svm",
+      "acc": 0.8757407407407407,
+      "n_train": 216
+    },
+    {
+      "fraction": 0.01,
+      "draw": 1,
+      "probe": "knn",
+      "acc": 0.865,
+      "n_train": 216,
+      "k": 16
+    },
+    {
+      "fraction": 0.01,
+      "draw": 1,
+      "probe": "linear_svm",
+      "acc": 0.8783333333333333,
+      "n_train": 216
+    },
+    {
+      "fraction": 0.01,
+      "draw": 1,
+      "probe": "rbf_svm",
+      "acc": 0.882962962962963,
+      "n_train": 216
+    },
+    {
+      "fraction": 0.01,
+      "draw": 2,
+      "probe": "knn",
+      "acc": 0.8644444444444445,
+      "n_train": 216,
+      "k": 16
+    },
+    {
+      "fraction": 0.01,
+      "draw": 2,
+      "probe": "linear_svm",
+      "acc": 0.8744444444444445,
+      "n_train": 216
+    },
+    {
+      "fraction": 0.01,
+      "draw": 2,
+      "probe": "rbf_svm",
+      "acc": 0.8872222222222222,
+      "n_train": 216
+    },
+    {
+      "fraction": 0.1,
+      "draw": 0,
+      "probe": "knn",
+      "acc": 0.9070370370370371,
+      "n_train": 2160,
+      "k": 20
+    },
+    {
+      "fraction": 0.1,
+      "draw": 0,
+      "probe": "linear_svm",
+      "acc": 0.8892592592592593,
+      "n_train": 2160
+    },
+    {
+      "fraction": 0.1,
+      "draw": 0,
+      "probe": "rbf_svm",
+      "acc": 0.9164814814814815,
+      "n_train": 2160
+    },
+    {
+      "fraction": 0.1,
+      "draw": 1,
+      "probe": "knn",
+      "acc": 0.9016666666666666,
+      "n_train": 2160,
+      "k": 20
+    },
+    {
+      "fraction": 0.1,
+      "draw": 1,
+      "probe": "linear_svm",
+      "acc": 0.8862962962962962,
+      "n_train": 2160
+    },
+    {
+      "fraction": 0.1,
+      "draw": 1,
+      "probe": "rbf_svm",
+      "acc": 0.9138888888888889,
+      "n_train": 2160
+    },
+    {
+      "fraction": 0.1,
+      "draw": 2,
+      "probe": "knn",
+      "acc": 0.9018518518518519,
+      "n_train": 2160,
+      "k": 20
+    },
+    {
+      "fraction": 0.1,
+      "draw": 2,
+      "probe": "linear_svm",
+      "acc": 0.8914814814814814,
+      "n_train": 2160
+    },
+    {
+      "fraction": 0.1,
+      "draw": 2,
+      "probe": "rbf_svm",
+      "acc": 0.915,
+      "n_train": 2160
+    },
+    {
+      "fraction": 0.5,
+      "draw": 0,
+      "probe": "knn",
+      "acc": 0.9125925925925926,
+      "n_train": 10800,
+      "k": 20
+    },
+    {
+      "fraction": 0.5,
+      "draw": 0,
+      "probe": "linear_svm",
+      "acc": 0.905,
+      "n_train": 10800
+    },
+    {
+      "fraction": 0.5,
+      "draw": 0,
+      "probe": "rbf_svm",
+      "acc": 0.9283333333333333,
+      "n_train": 10000
+    },
+    {
+      "fraction": 0.5,
+      "draw": 1,
+      "probe": "knn",
+      "acc": 0.9144444444444444,
+      "n_train": 10800,
+      "k": 20
+    },
+    {
+      "fraction": 0.5,
+      "draw": 1,
+      "probe": "linear_svm",
+      "acc": 0.9057407407407407,
+      "n_train": 10800
+    },
+    {
+      "fraction": 0.5,
+      "draw": 1,
+      "probe": "rbf_svm",
+      "acc": 0.93,
+      "n_train": 10000
+    },
+    {
+      "fraction": 0.5,
+      "draw": 2,
+      "probe": "knn",
+      "acc": 0.9131481481481482,
+      "n_train": 10800,
+      "k": 20
+    },
+    {
+      "fraction": 0.5,
+      "draw": 2,
+      "probe": "linear_svm",
+      "acc": 0.9009259259259259,
+      "n_train": 10800
+    },
+    {
+      "fraction": 0.5,
+      "draw": 2,
+      "probe": "rbf_svm",
+      "acc": 0.9275925925925926,
+      "n_train": 10000
+    },
+    {
+      "fraction": 1.0,
+      "draw": 0,
+      "probe": "knn",
+      "acc": 0.9183333333333333,
+      "n_train": 21600,
+      "k": 20
+    },
+    {
+      "fraction": 1.0,
+      "draw": 0,
+      "probe": "linear_svm",
+      "acc": 0.9233333333333333,
+      "n_train": 21600
+    },
+    {
+      "fraction": 1.0,
+      "draw": 0,
+      "probe": "rbf_svm",
+      "acc": 0.9303703703703704,
+      "n_train": 10000
+    },
+    {
+      "fraction": 1.0,
+      "draw": 1,
+      "probe": "knn",
+      "acc": 0.9183333333333333,
+      "n_train": 21600,
+      "k": 20
+    },
+    {
+      "fraction": 1.0,
+      "draw": 1,
+      "probe": "linear_svm",
+      "acc": 0.9233333333333333,
+      "n_train": 21600
+    },
+    {
+      "fraction": 1.0,
+      "draw": 1,
+      "probe": "rbf_svm",
+      "acc": 0.9277777777777778,
+      "n_train": 10000
+    },
+    {
+      "fraction": 1.0,
+      "draw": 2,
+      "probe": "knn",
+      "acc": 0.9183333333333333,
+      "n_train": 21600,
+      "k": 20
+    },
+    {
+      "fraction": 1.0,
+      "draw": 2,
+      "probe": "linear_svm",
+      "acc": 0.9233333333333333,
+      "n_train": 21600
+    },
+    {
+      "fraction": 1.0,
+      "draw": 2,
+      "probe": "rbf_svm",
+      "acc": 0.9285185185185185,
+      "n_train": 10000
+    }
+  ],
+  "diag": {
+    "nmi": 0.7276680124009047,
+    "ari": 0.6861087089796789,
+    "emb_std": 0.036178842186927795,
+    "emb_std_ref": 0.051031036307982884,
+    "emb_std_ratio": 0.7089576227412075
+  }
+}

@@ -1,0 +1,71 @@
+2026-11-18 14:20:00 | INFO    | mo433.evaluate               | ==========================================================================================
+2026-11-18 14:20:00 | INFO    | mo433.evaluate               | Início da etapa 'evaluate' (pid=11716)
+2026-11-18 14:20:00 | INFO    | mo433.evaluate               | Linha de comando: C:\Users\felip\OneDrive\Desktop\Arquivos\Projetos\UnsupervisedLearning\projeto\mo433_projeto_final\src\mo433_projeto_final\__main__.py evaluate --dataset eurosat --n-jobs 3
+2026-11-18 14:20:00 | INFO    | mo433.cli                    | Dataset=eurosat | hardware={'python': '3.13.7', 'torch': '2.11.0+cu128', 'cuda_available': True, 'cpu_count': 12, 'platform': 'win32', 'gpu': 'NVIDIA GeForce RTX 4060', 'gpu_memory_gb': 8.0, 'cuda': '12.8', 'cudnn': 91900}
+2026-11-18 14:20:00 | INFO    | mo433.cli                    | Configuração: {'dataset': 'eurosat', 'img_size': 64, 'n_unlabeled': None, 'test_fraction': 0.2, 'split_seed': 0, 'n_views': 8, 'min_scale': 0.2, 'epochs': 100, 'batch_size': 256, 'lr': 0.001, 'weight_decay': 0.05, 'warmup_epochs': 3, 'vicreg_hidden': 2048, 'vicreg_out': 2048, 'distill_hidden': 2048, 'lr_B': 0.002, 'lr_C': 0.002, 'student_sizes': {'small': 0.5, 'large': 1.5}, 'seeds': {'small': [0, 1, 2], 'large': [0, 1]}, 'teacher_name': 'vit_small_patch16_224.dino', 'teacher_res': 224, 'label_fractions': [0.01, 0.1, 0.5, 1.0], 'n_draws': 3, 'rbf_max_samples': 10000, 'ablation_data_fractions': [0.5], 'num_workers': 6, 'teacher_pretrain_gpu_hours': 2688.0}
+2026-11-18 14:20:04 | INFO    | mo433.evaluate               | Features extraídas: A_small_seed0
+2026-11-18 14:20:05 | INFO    | mo433.evaluate               | Features extraídas: A_small_seed1
+2026-11-18 14:20:06 | INFO    | mo433.evaluate               | Features extraídas: A_small_seed2
+2026-11-18 14:20:09 | INFO    | mo433.evaluate               | Features extraídas: A_large_seed0
+2026-11-18 14:20:13 | INFO    | mo433.evaluate               | Features extraídas: A_large_seed1
+2026-11-18 14:20:13 | INFO    | mo433.evaluate               | 26 encoders com features disponíveis.
+2026-11-18 14:20:13 | INFO    | mo433.evaluate               | Escolhendo C/gamma por CV (3 folds) no treino, encoder de referência B_small_seed0, 100% rótulos
+2026-11-18 14:20:42 | INFO    | mo433.probes                 | CV SVM linear: {'C=0.001': np.float64(0.8792), 'C=0.01': np.float64(0.8864), 'C=0.1': np.float64(0.8886), 'C=1.0': np.float64(0.889)}
+2026-11-18 14:21:19 | INFO    | mo433.probes                 | CV SVM RBF: C=0.1    gamma_mult=0.1   -> 0.8580
+2026-11-18 14:21:19 | INFO    | mo433.probes                 | CV SVM RBF: C=0.1    gamma_mult=1.0   -> 0.8752
+2026-11-18 14:21:19 | INFO    | mo433.probes                 | CV SVM RBF: C=0.1    gamma_mult=10.0  -> 0.2421
+2026-11-18 14:21:19 | INFO    | mo433.probes                 | CV SVM RBF: C=1.0    gamma_mult=0.1   -> 0.8795
+2026-11-18 14:21:19 | INFO    | mo433.probes                 | CV SVM RBF: C=1.0    gamma_mult=1.0   -> 0.8922
+2026-11-18 14:21:19 | INFO    | mo433.probes                 | CV SVM RBF: C=1.0    gamma_mult=10.0  -> 0.6214
+2026-11-18 14:21:19 | INFO    | mo433.probes                 | CV SVM RBF: C=10.0   gamma_mult=0.1   -> 0.8892
+2026-11-18 14:21:19 | INFO    | mo433.probes                 | CV SVM RBF: C=10.0   gamma_mult=1.0   -> 0.8883
+2026-11-18 14:21:19 | INFO    | mo433.probes                 | CV SVM RBF: C=10.0   gamma_mult=10.0  -> 0.6509
+2026-11-18 14:21:19 | INFO    | mo433.probes                 | CV SVM RBF: C=100.0  gamma_mult=0.1   -> 0.8818
+2026-11-18 14:21:19 | INFO    | mo433.probes                 | CV SVM RBF: C=100.0  gamma_mult=1.0   -> 0.8882
+2026-11-18 14:21:19 | INFO    | mo433.probes                 | CV SVM RBF: C=100.0  gamma_mult=10.0  -> 0.6509
+2026-11-18 14:21:19 | WARNING | mo433.probes                 | C linear ótimo (1.0) está na borda da grade [0.001, 0.01, 0.1, 1.0]
+2026-11-18 14:21:19 | INFO    | mo433.probes                 | Hiperparâmetros das sondas CONGELADOS: {'linear_C': 1.0, 'rbf_C': 1.0, 'rbf_gamma_mult': 1.0, 'cv_linear_acc': 0.8889814814814815, 'cv_rbf_acc': 0.8921997178722072}
+2026-11-18 14:21:19 | INFO    | mo433.evaluate               | Sondas: 26 encoders a avaliar (0 já em cache), n_jobs=3
+2026-11-18 14:22:10 | INFO    | mo433.evaluate               |   B_small_seed0            dim=128 | SVM linear (draw 0): 0.01->0.769 0.1->0.841 0.5->0.884 1->0.894 | NMI=0.645 ARI=0.564
+2026-11-18 14:22:17 | INFO    | mo433.evaluate               |   B_small_seed0_data50     dim=128 | SVM linear (draw 0): 0.01->0.706 0.1->0.779 0.5->0.828 1->0.832 | NMI=0.545 ARI=0.421
+2026-11-18 14:22:48 | INFO    | mo433.evaluate               |   C_small_seed0            dim=128 | SVM linear (draw 0): 0.01->0.861 0.1->0.901 0.5->0.937 1->0.947 | NMI=0.749 ARI=0.677
+2026-11-18 14:22:55 | INFO    | mo433.evaluate               |   C_small_seed0_data50     dim=128 | SVM linear (draw 0): 0.01->0.846 0.1->0.889 0.5->0.929 1->0.930 | NMI=0.709 ARI=0.628
+2026-11-18 14:23:13 | INFO    | mo433.evaluate               |   A_small_seed0            dim=128 | SVM linear (draw 0): 0.01->0.272 0.1->0.425 0.5->0.468 1->0.472 | NMI=0.207 ARI=0.140
+2026-11-18 14:23:39 | INFO    | mo433.evaluate               |   B_small_seed1            dim=128 | SVM linear (draw 0): 0.01->0.791 0.1->0.845 0.5->0.887 1->0.891 | NMI=0.633 ARI=0.542
+2026-11-18 14:24:08 | INFO    | mo433.evaluate               |   B_small_seed1_data50     dim=128 | SVM linear (draw 0): 0.01->0.697 0.1->0.780 0.5->0.831 1->0.836 | NMI=0.561 ARI=0.453
+2026-11-18 14:24:20 | INFO    | mo433.evaluate               |   C_small_seed1            dim=128 | SVM linear (draw 0): 0.01->0.866 0.1->0.908 0.5->0.943 1->0.945 | NMI=0.746 ARI=0.674
+2026-11-18 14:24:28 | INFO    | mo433.evaluate               |   A_small_seed1            dim=128 | SVM linear (draw 0): 0.01->0.304 0.1->0.460 0.5->0.507 1->0.521 | NMI=0.252 ARI=0.152
+2026-11-18 14:24:47 | INFO    | mo433.evaluate               |   C_small_seed1_data50     dim=128 | SVM linear (draw 0): 0.01->0.843 0.1->0.883 0.5->0.925 1->0.926 | NMI=0.714 ARI=0.639
+2026-11-18 14:25:12 | INFO    | mo433.evaluate               |   B_small_seed2            dim=128 | SVM linear (draw 0): 0.01->0.786 0.1->0.838 0.5->0.889 1->0.891 | NMI=0.637 ARI=0.537
+2026-11-18 14:25:39 | INFO    | mo433.evaluate               |   B_small_seed2_data50     dim=128 | SVM linear (draw 0): 0.01->0.708 0.1->0.777 0.5->0.831 1->0.833 | NMI=0.550 ARI=0.422
+2026-11-18 14:25:51 | INFO    | mo433.evaluate               |   C_small_seed2            dim=128 | SVM linear (draw 0): 0.01->0.864 0.1->0.914 0.5->0.945 1->0.949 | NMI=0.738 ARI=0.689
+2026-11-18 14:26:03 | INFO    | mo433.evaluate               |   A_small_seed2            dim=128 | SVM linear (draw 0): 0.01->0.297 0.1->0.460 0.5->0.507 1->0.509 | NMI=0.222 ARI=0.138
+2026-11-18 14:26:17 | INFO    | mo433.evaluate               |   C_small_seed2_data50     dim=128 | SVM linear (draw 0): 0.01->0.835 0.1->0.890 0.5->0.923 1->0.927 | NMI=0.704 ARI=0.637
+2026-11-18 14:28:41 | INFO    | mo433.evaluate               |   B_large_seed0            dim=384 | SVM linear (draw 0): 0.01->0.866 0.1->0.889 0.5->0.905 1->0.923 | NMI=0.728 ARI=0.686
+2026-11-18 14:29:14 | INFO    | mo433.evaluate               |   B_large_seed0_data50     dim=384 | SVM linear (draw 0): 0.01->0.795 0.1->0.829 0.5->0.872 1->0.891 | NMI=0.635 ARI=0.527
+2026-11-18 14:31:22 | INFO    | mo433.evaluate               |   A_large_seed0            dim=384 | SVM linear (draw 0): 0.01->0.314 0.1->0.467 0.5->0.600 1->0.620 | NMI=0.241 ARI=0.148
+2026-11-18 14:31:58 | INFO    | mo433.evaluate               |   C_large_seed0_data50     dim=384 | SVM linear (draw 0): 0.01->0.877 0.1->0.924 0.5->0.930 1->0.950 | NMI=0.765 ARI=0.695
+2026-11-18 14:32:25 | INFO    | mo433.evaluate               |   C_large_seed0            dim=384 | SVM linear (draw 0): 0.01->0.894 0.1->0.932 0.5->0.947 1->0.959 | NMI=0.781 ARI=0.702
+2026-11-18 14:34:48 | INFO    | mo433.evaluate               |   B_large_seed1            dim=384 | SVM linear (draw 0): 0.01->0.868 0.1->0.894 0.5->0.899 1->0.921 | NMI=0.680 ARI=0.585
+2026-11-18 14:35:16 | INFO    | mo433.evaluate               |   B_large_seed1_data50     dim=384 | SVM linear (draw 0): 0.01->0.808 0.1->0.834 0.5->0.876 1->0.891 | NMI=0.668 ARI=0.588
+2026-11-18 14:36:51 | INFO    | mo433.evaluate               |   A_large_seed1            dim=384 | SVM linear (draw 0): 0.01->0.287 0.1->0.448 0.5->0.580 1->0.606 | NMI=0.254 ARI=0.162
+2026-11-18 14:38:33 | INFO    | mo433.evaluate               |   C_large_seed1_data50     dim=384 | SVM linear (draw 0): 0.01->0.883 0.1->0.925 0.5->0.933 1->0.948 | NMI=0.763 ARI=0.694
+2026-11-18 14:38:40 | INFO    | mo433.evaluate               |   C_large_seed1            dim=384 | SVM linear (draw 0): 0.01->0.889 0.1->0.933 0.5->0.940 1->0.957 | NMI=0.782 ARI=0.705
+2026-11-18 14:40:37 | INFO    | mo433.evaluate               | ==========================================================================================
+2026-11-18 14:40:37 | INFO    | mo433.evaluate               | Início da etapa 'evaluate' (pid=1904)
+2026-11-18 14:40:37 | INFO    | mo433.evaluate               | Linha de comando: C:\Users\felip\OneDrive\Desktop\Arquivos\Projetos\UnsupervisedLearning\projeto\mo433_projeto_final\src\mo433_projeto_final\__main__.py evaluate --dataset eurosat --n-jobs 1
+2026-11-18 14:40:37 | INFO    | mo433.cli                    | Dataset=eurosat | hardware={'python': '3.13.7', 'torch': '2.11.0+cu128', 'cuda_available': True, 'cpu_count': 12, 'platform': 'win32', 'gpu': 'NVIDIA GeForce RTX 4060', 'gpu_memory_gb': 8.0, 'cuda': '12.8', 'cudnn': 91900}
+2026-11-18 14:40:37 | INFO    | mo433.cli                    | Configuração: {'dataset': 'eurosat', 'img_size': 64, 'n_unlabeled': None, 'test_fraction': 0.2, 'split_seed': 0, 'n_views': 8, 'min_scale': 0.2, 'epochs': 100, 'batch_size': 256, 'lr': 0.001, 'weight_decay': 0.05, 'warmup_epochs': 3, 'vicreg_hidden': 2048, 'vicreg_out': 2048, 'distill_hidden': 2048, 'lr_B': 0.002, 'lr_C': 0.002, 'student_sizes': {'small': 0.5, 'large': 1.5}, 'seeds': {'small': [0, 1, 2], 'large': [0, 1]}, 'teacher_name': 'vit_small_patch16_224.dino', 'teacher_res': 224, 'label_fractions': [0.01, 0.1, 0.5, 1.0], 'n_draws': 3, 'rbf_max_samples': 10000, 'ablation_data_fractions': [0.5], 'num_workers': 6, 'teacher_pretrain_gpu_hours': 2688.0}
+2026-11-18 14:40:46 | INFO    | mo433.evaluate               | 26 encoders com features disponíveis.
+2026-11-18 14:40:46 | INFO    | mo433.evaluate               | Hiperparâmetros das sondas (congelados): {'linear_C': 1.0, 'rbf_C': 1.0, 'rbf_gamma_mult': 1.0, 'cv_linear_acc': 0.8889814814814815, 'cv_rbf_acc': 0.8921997178722072, 'reference_encoder': 'B_small_seed0'}
+2026-11-18 14:40:46 | INFO    | mo433.evaluate               | Sondas: 1 encoders a avaliar (25 já em cache), n_jobs=1
+2026-11-18 14:42:44 | INFO    | mo433.evaluate               |   D_teacher                dim=384 | SVM linear (draw 0): 0.01->0.894 0.1->0.940 0.5->0.954 1->0.967 | NMI=0.760 ARI=0.712
+2026-11-18 14:42:44 | INFO    | mo433.evaluate               | probe_results.csv (936 linhas) e diagnostics.csv (26 linhas) salvos.
+2026-11-18 14:42:51 | INFO    | mo433.evaluate               | t-SNE calculado: A_small_seed0
+2026-11-18 14:42:57 | INFO    | mo433.evaluate               | t-SNE calculado: B_small_seed0
+2026-11-18 14:43:03 | INFO    | mo433.evaluate               | t-SNE calculado: C_small_seed0
+2026-11-18 14:43:11 | INFO    | mo433.evaluate               | t-SNE calculado: A_large_seed0
+2026-11-18 14:43:17 | INFO    | mo433.evaluate               | t-SNE calculado: B_large_seed0
+2026-11-18 14:43:24 | INFO    | mo433.evaluate               | t-SNE calculado: C_large_seed0
+2026-11-18 14:43:30 | INFO    | mo433.evaluate               | Projeções t-SNE salvas em C:\Users\felip\OneDrive\Desktop\Arquivos\Projetos\UnsupervisedLearning\projeto\mo433_projeto_final\results\eurosat\tsne.npz
+2026-11-18 14:43:30 | INFO    | mo433.cli                    | Etapa 'evaluate' concluída.

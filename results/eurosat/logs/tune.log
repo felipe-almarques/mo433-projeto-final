@@ -1,0 +1,187 @@
+2026-11-18 11:12:14 | INFO    | mo433.tune                   | ==========================================================================================
+2026-11-18 11:12:14 | INFO    | mo433.tune                   | Início da etapa 'tune' (pid=18280)
+2026-11-18 11:12:14 | INFO    | mo433.tune                   | Linha de comando: C:\Users\felip\OneDrive\Desktop\Arquivos\Projetos\UnsupervisedLearning\projeto\mo433_projeto_final\src\mo433_projeto_final\__main__.py tune --dataset eurosat --n-jobs 4
+2026-11-18 11:12:14 | INFO    | mo433.cli                    | Dataset=eurosat | hardware={'python': '3.13.7', 'torch': '2.11.0+cu128', 'cuda_available': True, 'cpu_count': 12, 'platform': 'win32', 'gpu': 'NVIDIA GeForce RTX 4060', 'gpu_memory_gb': 8.0, 'cuda': '12.8', 'cudnn': 91900}
+2026-11-18 11:12:14 | INFO    | mo433.cli                    | Configuração: {'dataset': 'eurosat', 'img_size': 64, 'n_unlabeled': None, 'test_fraction': 0.2, 'split_seed': 0, 'n_views': 8, 'min_scale': 0.2, 'epochs': 100, 'batch_size': 256, 'lr': 0.001, 'weight_decay': 0.05, 'warmup_epochs': 3, 'vicreg_hidden': 2048, 'vicreg_out': 2048, 'distill_hidden': 2048, 'lr_B': None, 'lr_C': None, 'student_sizes': {'small': 0.5, 'large': 1.5}, 'seeds': {'small': [0, 1, 2], 'large': [0, 1]}, 'teacher_name': 'vit_small_patch16_224.dino', 'teacher_res': 224, 'label_fractions': [0.01, 0.1, 0.5, 1.0], 'n_draws': 3, 'rbf_max_samples': 10000, 'ablation_data_fractions': [0.5], 'num_workers': 6, 'teacher_pretrain_gpu_hours': 2688.0}
+2026-11-18 11:12:15 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] carregando 21600 imagens x 8 views do pool para a RAM...
+2026-11-18 11:12:19 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] linha=B | aluno=small (m=0.50, 700176 params, dim=128) | cabeça=8660992 params
+2026-11-18 11:12:19 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] pool=21600 imgs (fração 100%) | K=8 | batch=256 | passos/época=84 | épocas=25 | passos totais=2100 | lr=5.00e-04 | wd=0.050 | warm-up=252 passos
+2026-11-18 11:12:34 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época   1/25 | perda=22.8423 | invariance=0.1199 | variance=0.7353 | covariance=1.4615 | feat_std=0.0351 (ref 0.0884) | lr=1.67e-04 | 14.9s
+2026-11-18 11:12:39 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época   2/25 | perda=21.5563 | invariance=0.0874 | variance=0.7575 | covariance=0.4320 | feat_std=0.0372 (ref 0.0884) | lr=3.33e-04 | 5.2s
+2026-11-18 11:12:44 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época   3/25 | perda=21.3562 | invariance=0.0777 | variance=0.7532 | covariance=0.5843 | feat_std=0.0413 (ref 0.0884) | lr=5.00e-04 | 5.2s
+2026-11-18 11:12:50 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época   4/25 | perda=21.1285 | invariance=0.0708 | variance=0.7457 | covariance=0.7149 | feat_std=0.0454 (ref 0.0884) | lr=4.98e-04 | 5.5s
+2026-11-18 11:12:55 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época   5/25 | perda=20.9078 | invariance=0.0696 | variance=0.7347 | covariance=0.7994 | feat_std=0.0475 (ref 0.0884) | lr=4.90e-04 | 5.5s
+2026-11-18 11:13:01 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época   6/25 | perda=20.7483 | invariance=0.0699 | variance=0.7259 | covariance=0.8533 | feat_std=0.0489 (ref 0.0884) | lr=4.78e-04 | 5.8s
+2026-11-18 11:13:07 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época   7/25 | perda=20.6195 | invariance=0.0716 | variance=0.7181 | covariance=0.8774 | feat_std=0.0495 (ref 0.0884) | lr=4.61e-04 | 5.5s
+2026-11-18 11:13:12 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época   8/25 | perda=20.4804 | invariance=0.0722 | variance=0.7103 | covariance=0.9162 | feat_std=0.0501 (ref 0.0884) | lr=4.39e-04 | 5.6s
+2026-11-18 11:13:18 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época   9/25 | perda=20.3878 | invariance=0.0738 | variance=0.7043 | covariance=0.9359 | feat_std=0.0505 (ref 0.0884) | lr=4.14e-04 | 5.4s
+2026-11-18 11:13:23 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época  10/25 | perda=20.3080 | invariance=0.0746 | variance=0.6997 | covariance=0.9511 | feat_std=0.0509 (ref 0.0884) | lr=3.86e-04 | 5.3s
+2026-11-18 11:13:28 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época  11/25 | perda=20.2242 | invariance=0.0755 | variance=0.6946 | covariance=0.9725 | feat_std=0.0513 (ref 0.0884) | lr=3.54e-04 | 5.2s
+2026-11-18 11:13:34 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época  12/25 | perda=20.1453 | invariance=0.0762 | variance=0.6899 | covariance=0.9929 | feat_std=0.0515 (ref 0.0884) | lr=3.21e-04 | 5.2s
+2026-11-18 11:13:39 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época  13/25 | perda=20.0814 | invariance=0.0769 | variance=0.6861 | covariance=1.0069 | feat_std=0.0515 (ref 0.0884) | lr=2.86e-04 | 5.1s
+2026-11-18 11:13:44 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época  14/25 | perda=20.0331 | invariance=0.0777 | variance=0.6831 | covariance=1.0128 | feat_std=0.0517 (ref 0.0884) | lr=2.50e-04 | 5.1s
+2026-11-18 11:13:49 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época  15/25 | perda=19.9719 | invariance=0.0784 | variance=0.6795 | covariance=1.0250 | feat_std=0.0517 (ref 0.0884) | lr=2.15e-04 | 5.1s
+2026-11-18 11:13:54 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época  16/25 | perda=19.9295 | invariance=0.0793 | variance=0.6765 | covariance=1.0355 | feat_std=0.0518 (ref 0.0884) | lr=1.80e-04 | 5.1s
+2026-11-18 11:13:59 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época  17/25 | perda=19.9033 | invariance=0.0795 | variance=0.6751 | covariance=1.0375 | feat_std=0.0519 (ref 0.0884) | lr=1.47e-04 | 5.2s
+2026-11-18 11:14:04 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época  18/25 | perda=19.8603 | invariance=0.0797 | variance=0.6729 | covariance=1.0440 | feat_std=0.0518 (ref 0.0884) | lr=1.15e-04 | 5.2s
+2026-11-18 11:14:10 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época  19/25 | perda=19.8134 | invariance=0.0802 | variance=0.6701 | covariance=1.0553 | feat_std=0.0519 (ref 0.0884) | lr=8.66e-05 | 5.3s
+2026-11-18 11:14:15 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época  20/25 | perda=19.7947 | invariance=0.0805 | variance=0.6690 | covariance=1.0549 | feat_std=0.0517 (ref 0.0884) | lr=6.13e-05 | 5.2s
+2026-11-18 11:14:20 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época  21/25 | perda=19.7587 | invariance=0.0807 | variance=0.6670 | covariance=1.0660 | feat_std=0.0518 (ref 0.0884) | lr=3.99e-05 | 5.2s
+2026-11-18 11:14:25 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época  22/25 | perda=19.7481 | invariance=0.0809 | variance=0.6665 | covariance=1.0647 | feat_std=0.0518 (ref 0.0884) | lr=2.28e-05 | 5.3s
+2026-11-18 11:14:31 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época  23/25 | perda=19.7248 | invariance=0.0808 | variance=0.6654 | covariance=1.0705 | feat_std=0.0518 (ref 0.0884) | lr=1.02e-05 | 5.3s
+2026-11-18 11:14:36 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época  24/25 | perda=19.7218 | invariance=0.0812 | variance=0.6648 | covariance=1.0727 | feat_std=0.0517 (ref 0.0884) | lr=2.61e-06 | 5.2s
+2026-11-18 11:14:41 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] época  25/25 | perda=19.7179 | invariance=0.0812 | variance=0.6646 | covariance=1.0735 | feat_std=0.0517 (ref 0.0884) | lr=3.61e-10 | 5.1s
+2026-11-18 11:14:41 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.0005] treino concluído em 2.4 min (0.0394 GPU-h), pico de memória 0.70 GB
+2026-11-18 11:14:56 | INFO    | mo433.tune                   | [tune] linha B lr=0.0005 (25 épocas): k-NN validação = 0.7324
+2026-11-18 11:14:56 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] carregando 21600 imagens x 8 views do pool para a RAM...
+2026-11-18 11:14:58 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] linha=B | aluno=small (m=0.50, 700176 params, dim=128) | cabeça=8660992 params
+2026-11-18 11:14:58 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] pool=21600 imgs (fração 100%) | K=8 | batch=256 | passos/época=84 | épocas=25 | passos totais=2100 | lr=1.00e-03 | wd=0.050 | warm-up=252 passos
+2026-11-18 11:15:03 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época   1/25 | perda=22.4975 | invariance=0.1110 | variance=0.7419 | covariance=1.1748 | feat_std=0.0354 (ref 0.0884) | lr=3.33e-04 | 5.5s
+2026-11-18 11:15:08 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época   2/25 | perda=21.4390 | invariance=0.0803 | variance=0.7560 | covariance=0.5323 | feat_std=0.0392 (ref 0.0884) | lr=6.67e-04 | 5.2s
+2026-11-18 11:15:14 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época   3/25 | perda=21.1699 | invariance=0.0698 | variance=0.7480 | covariance=0.7252 | feat_std=0.0448 (ref 0.0884) | lr=1.00e-03 | 5.2s
+2026-11-18 11:15:19 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época   4/25 | perda=20.8790 | invariance=0.0677 | variance=0.7340 | covariance=0.8370 | feat_std=0.0482 (ref 0.0884) | lr=9.95e-04 | 5.3s
+2026-11-18 11:15:24 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época   5/25 | perda=20.6181 | invariance=0.0683 | variance=0.7197 | covariance=0.9169 | feat_std=0.0495 (ref 0.0884) | lr=9.80e-04 | 5.2s
+2026-11-18 11:15:29 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época   6/25 | perda=20.4315 | invariance=0.0700 | variance=0.7086 | covariance=0.9646 | feat_std=0.0508 (ref 0.0884) | lr=9.55e-04 | 5.2s
+2026-11-18 11:15:34 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época   7/25 | perda=20.3186 | invariance=0.0717 | variance=0.7017 | covariance=0.9832 | feat_std=0.0516 (ref 0.0884) | lr=9.21e-04 | 5.2s
+2026-11-18 11:15:40 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época   8/25 | perda=20.2001 | invariance=0.0727 | variance=0.6945 | covariance=1.0184 | feat_std=0.0521 (ref 0.0884) | lr=8.78e-04 | 5.1s
+2026-11-18 11:15:45 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época   9/25 | perda=20.0942 | invariance=0.0739 | variance=0.6881 | covariance=1.0427 | feat_std=0.0522 (ref 0.0884) | lr=8.28e-04 | 5.2s
+2026-11-18 11:15:50 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época  10/25 | perda=20.0313 | invariance=0.0756 | variance=0.6839 | covariance=1.0436 | feat_std=0.0526 (ref 0.0884) | lr=7.71e-04 | 5.3s
+2026-11-18 11:15:55 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época  11/25 | perda=19.9140 | invariance=0.0761 | variance=0.6775 | covariance=1.0725 | feat_std=0.0528 (ref 0.0884) | lr=7.08e-04 | 5.2s
+2026-11-18 11:16:01 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época  12/25 | perda=19.8313 | invariance=0.0770 | variance=0.6723 | covariance=1.0974 | feat_std=0.0531 (ref 0.0884) | lr=6.42e-04 | 5.2s
+2026-11-18 11:16:06 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época  13/25 | perda=19.7250 | invariance=0.0773 | variance=0.6666 | covariance=1.1256 | feat_std=0.0533 (ref 0.0884) | lr=5.72e-04 | 5.3s
+2026-11-18 11:16:11 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época  14/25 | perda=19.6594 | invariance=0.0780 | variance=0.6629 | covariance=1.1364 | feat_std=0.0535 (ref 0.0884) | lr=5.01e-04 | 5.2s
+2026-11-18 11:16:16 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época  15/25 | perda=19.5862 | invariance=0.0785 | variance=0.6588 | covariance=1.1545 | feat_std=0.0535 (ref 0.0884) | lr=4.30e-04 | 5.3s
+2026-11-18 11:16:22 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época  16/25 | perda=19.5343 | invariance=0.0798 | variance=0.6549 | covariance=1.1663 | feat_std=0.0536 (ref 0.0884) | lr=3.60e-04 | 5.2s
+2026-11-18 11:16:27 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época  17/25 | perda=19.4889 | invariance=0.0801 | variance=0.6525 | covariance=1.1731 | feat_std=0.0537 (ref 0.0884) | lr=2.93e-04 | 5.2s
+2026-11-18 11:16:32 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época  18/25 | perda=19.4351 | invariance=0.0806 | variance=0.6495 | covariance=1.1840 | feat_std=0.0537 (ref 0.0884) | lr=2.30e-04 | 5.2s
+2026-11-18 11:16:37 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época  19/25 | perda=19.3791 | invariance=0.0806 | variance=0.6468 | covariance=1.1933 | feat_std=0.0537 (ref 0.0884) | lr=1.73e-04 | 5.1s
+2026-11-18 11:16:42 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época  20/25 | perda=19.3455 | invariance=0.0813 | variance=0.6445 | covariance=1.2010 | feat_std=0.0536 (ref 0.0884) | lr=1.23e-04 | 5.2s
+2026-11-18 11:16:48 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época  21/25 | perda=19.3049 | invariance=0.0815 | variance=0.6423 | covariance=1.2111 | feat_std=0.0536 (ref 0.0884) | lr=7.98e-05 | 5.2s
+2026-11-18 11:16:53 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época  22/25 | perda=19.2790 | invariance=0.0816 | variance=0.6412 | covariance=1.2104 | feat_std=0.0535 (ref 0.0884) | lr=4.55e-05 | 5.2s
+2026-11-18 11:16:58 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época  23/25 | perda=19.2479 | invariance=0.0818 | variance=0.6393 | covariance=1.2216 | feat_std=0.0535 (ref 0.0884) | lr=2.05e-05 | 5.3s
+2026-11-18 11:17:03 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época  24/25 | perda=19.2499 | invariance=0.0822 | variance=0.6388 | covariance=1.2236 | feat_std=0.0535 (ref 0.0884) | lr=5.21e-06 | 5.2s
+2026-11-18 11:17:08 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] época  25/25 | perda=19.2437 | invariance=0.0820 | variance=0.6389 | covariance=1.2212 | feat_std=0.0535 (ref 0.0884) | lr=7.22e-10 | 5.2s
+2026-11-18 11:17:08 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.001] treino concluído em 2.2 min (0.0363 GPU-h), pico de memória 0.70 GB
+2026-11-18 11:17:10 | INFO    | mo433.tune                   | [tune] linha B lr=0.001 (25 épocas): k-NN validação = 0.7553
+2026-11-18 11:17:10 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] carregando 21600 imagens x 8 views do pool para a RAM...
+2026-11-18 11:17:12 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] linha=B | aluno=small (m=0.50, 700176 params, dim=128) | cabeça=8660992 params
+2026-11-18 11:17:12 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] pool=21600 imgs (fração 100%) | K=8 | batch=256 | passos/época=84 | épocas=25 | passos totais=2100 | lr=2.00e-03 | wd=0.050 | warm-up=252 passos
+2026-11-18 11:17:18 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época   1/25 | perda=22.2327 | invariance=0.1033 | variance=0.7464 | covariance=0.9922 | feat_std=0.0362 (ref 0.0884) | lr=6.67e-04 | 5.6s
+2026-11-18 11:17:23 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época   2/25 | perda=21.3138 | invariance=0.0717 | variance=0.7546 | covariance=0.6578 | feat_std=0.0427 (ref 0.0884) | lr=1.33e-03 | 5.6s
+2026-11-18 11:17:29 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época   3/25 | perda=20.9886 | invariance=0.0643 | variance=0.7412 | covariance=0.8496 | feat_std=0.0471 (ref 0.0884) | lr=2.00e-03 | 5.3s
+2026-11-18 11:17:34 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época   4/25 | perda=20.6726 | invariance=0.0636 | variance=0.7254 | covariance=0.9462 | feat_std=0.0494 (ref 0.0884) | lr=1.99e-03 | 5.4s
+2026-11-18 11:17:40 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época   5/25 | perda=20.4228 | invariance=0.0665 | variance=0.7105 | covariance=0.9991 | feat_std=0.0507 (ref 0.0884) | lr=1.96e-03 | 5.5s
+2026-11-18 11:17:45 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época   6/25 | perda=20.2678 | invariance=0.0674 | variance=0.7017 | covariance=1.0401 | feat_std=0.0515 (ref 0.0884) | lr=1.91e-03 | 5.4s
+2026-11-18 11:17:50 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época   7/25 | perda=20.1404 | invariance=0.0695 | variance=0.6938 | covariance=1.0576 | feat_std=0.0522 (ref 0.0884) | lr=1.84e-03 | 5.4s
+2026-11-18 11:17:56 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época   8/25 | perda=20.0081 | invariance=0.0700 | variance=0.6863 | covariance=1.1008 | feat_std=0.0524 (ref 0.0884) | lr=1.76e-03 | 5.5s
+2026-11-18 11:18:01 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época   9/25 | perda=19.8706 | invariance=0.0712 | variance=0.6780 | covariance=1.1403 | feat_std=0.0527 (ref 0.0884) | lr=1.66e-03 | 5.4s
+2026-11-18 11:18:07 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época  10/25 | perda=19.7810 | invariance=0.0726 | variance=0.6728 | covariance=1.1463 | feat_std=0.0533 (ref 0.0884) | lr=1.54e-03 | 5.3s
+2026-11-18 11:18:12 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época  11/25 | perda=19.6642 | invariance=0.0734 | variance=0.6660 | covariance=1.1787 | feat_std=0.0536 (ref 0.0884) | lr=1.42e-03 | 5.6s
+2026-11-18 11:18:18 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época  12/25 | perda=19.5862 | invariance=0.0746 | variance=0.6608 | covariance=1.2011 | feat_std=0.0536 (ref 0.0884) | lr=1.28e-03 | 5.3s
+2026-11-18 11:18:23 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época  13/25 | perda=19.4736 | invariance=0.0747 | variance=0.6551 | covariance=1.2265 | feat_std=0.0538 (ref 0.0884) | lr=1.14e-03 | 5.3s
+2026-11-18 11:18:28 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época  14/25 | perda=19.4039 | invariance=0.0760 | variance=0.6505 | covariance=1.2414 | feat_std=0.0540 (ref 0.0884) | lr=1.00e-03 | 5.1s
+2026-11-18 11:18:33 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época  15/25 | perda=19.3318 | invariance=0.0763 | variance=0.6466 | covariance=1.2591 | feat_std=0.0539 (ref 0.0884) | lr=8.59e-04 | 5.2s
+2026-11-18 11:18:38 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época  16/25 | perda=19.2717 | invariance=0.0772 | variance=0.6428 | covariance=1.2708 | feat_std=0.0537 (ref 0.0884) | lr=7.20e-04 | 5.2s
+2026-11-18 11:18:44 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época  17/25 | perda=19.2106 | invariance=0.0784 | variance=0.6387 | covariance=1.2832 | feat_std=0.0540 (ref 0.0884) | lr=5.86e-04 | 5.2s
+2026-11-18 11:18:49 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época  18/25 | perda=19.1552 | invariance=0.0789 | variance=0.6355 | covariance=1.2945 | feat_std=0.0540 (ref 0.0884) | lr=4.61e-04 | 5.2s
+2026-11-18 11:18:54 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época  19/25 | perda=19.0795 | invariance=0.0788 | variance=0.6320 | covariance=1.3092 | feat_std=0.0541 (ref 0.0884) | lr=3.46e-04 | 5.2s
+2026-11-18 11:18:59 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época  20/25 | perda=19.0277 | invariance=0.0794 | variance=0.6289 | covariance=1.3206 | feat_std=0.0540 (ref 0.0884) | lr=2.45e-04 | 5.1s
+2026-11-18 11:19:04 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época  21/25 | perda=18.9814 | invariance=0.0794 | variance=0.6263 | covariance=1.3392 | feat_std=0.0541 (ref 0.0884) | lr=1.60e-04 | 5.2s
+2026-11-18 11:19:10 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época  22/25 | perda=18.9576 | invariance=0.0798 | variance=0.6249 | covariance=1.3408 | feat_std=0.0541 (ref 0.0884) | lr=9.11e-05 | 5.2s
+2026-11-18 11:19:15 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época  23/25 | perda=18.9140 | invariance=0.0796 | variance=0.6229 | covariance=1.3511 | feat_std=0.0541 (ref 0.0884) | lr=4.10e-05 | 5.2s
+2026-11-18 11:19:20 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época  24/25 | perda=18.9073 | invariance=0.0798 | variance=0.6223 | covariance=1.3545 | feat_std=0.0541 (ref 0.0884) | lr=1.04e-05 | 5.2s
+2026-11-18 11:19:25 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] época  25/25 | perda=18.9015 | invariance=0.0798 | variance=0.6223 | covariance=1.3503 | feat_std=0.0541 (ref 0.0884) | lr=1.44e-09 | 5.2s
+2026-11-18 11:19:25 | INFO    | mo433.train                  | [B_small_seed0_tune_lr0.002] treino concluído em 2.2 min (0.0369 GPU-h), pico de memória 0.70 GB
+2026-11-18 11:19:27 | INFO    | mo433.tune                   | [tune] linha B lr=0.002 (25 épocas): k-NN validação = 0.7954
+2026-11-18 11:19:27 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] carregando 21600 imagens x 8 views do pool para a RAM...
+2026-11-18 11:19:29 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] linha=C | aluno=small (m=0.50, 700176 params, dim=128) | cabeça=1055104 params
+2026-11-18 11:19:29 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] pool=21600 imgs (fração 100%) | K=8 | batch=256 | passos/época=84 | épocas=25 | passos totais=2100 | lr=5.00e-04 | wd=0.050 | warm-up=252 passos
+2026-11-18 11:19:31 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época   1/25 | perda=0.5197 | feat_std=0.0399 (ref 0.0884) | lr=1.67e-04 | 1.8s
+2026-11-18 11:19:32 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época   2/25 | perda=0.2797 | feat_std=0.0473 (ref 0.0884) | lr=3.33e-04 | 1.7s
+2026-11-18 11:19:34 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época   3/25 | perda=0.2555 | feat_std=0.0515 (ref 0.0884) | lr=5.00e-04 | 1.9s
+2026-11-18 11:19:36 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época   4/25 | perda=0.2350 | feat_std=0.0547 (ref 0.0884) | lr=4.98e-04 | 1.8s
+2026-11-18 11:19:38 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época   5/25 | perda=0.2166 | feat_std=0.0564 (ref 0.0884) | lr=4.90e-04 | 1.8s
+2026-11-18 11:19:40 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época   6/25 | perda=0.2066 | feat_std=0.0574 (ref 0.0884) | lr=4.78e-04 | 1.8s
+2026-11-18 11:19:41 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época   7/25 | perda=0.2010 | feat_std=0.0577 (ref 0.0884) | lr=4.61e-04 | 1.6s
+2026-11-18 11:19:43 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época   8/25 | perda=0.1947 | feat_std=0.0576 (ref 0.0884) | lr=4.39e-04 | 1.7s
+2026-11-18 11:19:44 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época   9/25 | perda=0.1894 | feat_std=0.0576 (ref 0.0884) | lr=4.14e-04 | 1.6s
+2026-11-18 11:19:46 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época  10/25 | perda=0.1862 | feat_std=0.0575 (ref 0.0884) | lr=3.86e-04 | 1.6s
+2026-11-18 11:19:48 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época  11/25 | perda=0.1821 | feat_std=0.0576 (ref 0.0884) | lr=3.54e-04 | 1.6s
+2026-11-18 11:19:49 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época  12/25 | perda=0.1794 | feat_std=0.0575 (ref 0.0884) | lr=3.21e-04 | 1.6s
+2026-11-18 11:19:51 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época  13/25 | perda=0.1761 | feat_std=0.0575 (ref 0.0884) | lr=2.86e-04 | 1.6s
+2026-11-18 11:19:53 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época  14/25 | perda=0.1739 | feat_std=0.0574 (ref 0.0884) | lr=2.50e-04 | 1.6s
+2026-11-18 11:19:54 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época  15/25 | perda=0.1725 | feat_std=0.0573 (ref 0.0884) | lr=2.15e-04 | 1.6s
+2026-11-18 11:19:56 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época  16/25 | perda=0.1699 | feat_std=0.0573 (ref 0.0884) | lr=1.80e-04 | 1.6s
+2026-11-18 11:19:57 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época  17/25 | perda=0.1673 | feat_std=0.0572 (ref 0.0884) | lr=1.47e-04 | 1.6s
+2026-11-18 11:19:59 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época  18/25 | perda=0.1670 | feat_std=0.0572 (ref 0.0884) | lr=1.15e-04 | 1.6s
+2026-11-18 11:20:00 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época  19/25 | perda=0.1642 | feat_std=0.0571 (ref 0.0884) | lr=8.66e-05 | 1.6s
+2026-11-18 11:20:02 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época  20/25 | perda=0.1645 | feat_std=0.0571 (ref 0.0884) | lr=6.13e-05 | 1.6s
+2026-11-18 11:20:04 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época  21/25 | perda=0.1626 | feat_std=0.0570 (ref 0.0884) | lr=3.99e-05 | 1.6s
+2026-11-18 11:20:05 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época  22/25 | perda=0.1622 | feat_std=0.0570 (ref 0.0884) | lr=2.28e-05 | 1.6s
+2026-11-18 11:20:07 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época  23/25 | perda=0.1617 | feat_std=0.0569 (ref 0.0884) | lr=1.02e-05 | 1.6s
+2026-11-18 11:20:08 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época  24/25 | perda=0.1615 | feat_std=0.0569 (ref 0.0884) | lr=2.61e-06 | 1.6s
+2026-11-18 11:20:10 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] época  25/25 | perda=0.1611 | feat_std=0.0569 (ref 0.0884) | lr=3.61e-10 | 1.6s
+2026-11-18 11:20:10 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.0005] treino concluído em 0.7 min (0.0115 GPU-h), pico de memória 0.21 GB
+2026-11-18 11:20:12 | INFO    | mo433.tune                   | [tune] linha C lr=0.0005 (25 épocas): k-NN validação = 0.8155
+2026-11-18 11:20:12 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] carregando 21600 imagens x 8 views do pool para a RAM...
+2026-11-18 11:20:13 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] linha=C | aluno=small (m=0.50, 700176 params, dim=128) | cabeça=1055104 params
+2026-11-18 11:20:13 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] pool=21600 imgs (fração 100%) | K=8 | batch=256 | passos/época=84 | épocas=25 | passos totais=2100 | lr=1.00e-03 | wd=0.050 | warm-up=252 passos
+2026-11-18 11:20:15 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época   1/25 | perda=0.4579 | feat_std=0.0414 (ref 0.0884) | lr=3.33e-04 | 1.8s
+2026-11-18 11:20:17 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época   2/25 | perda=0.2662 | feat_std=0.0493 (ref 0.0884) | lr=6.67e-04 | 1.6s
+2026-11-18 11:20:18 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época   3/25 | perda=0.2390 | feat_std=0.0545 (ref 0.0884) | lr=1.00e-03 | 1.6s
+2026-11-18 11:20:20 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época   4/25 | perda=0.2149 | feat_std=0.0574 (ref 0.0884) | lr=9.95e-04 | 1.6s
+2026-11-18 11:20:21 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época   5/25 | perda=0.1998 | feat_std=0.0581 (ref 0.0884) | lr=9.80e-04 | 1.6s
+2026-11-18 11:20:23 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época   6/25 | perda=0.1927 | feat_std=0.0583 (ref 0.0884) | lr=9.55e-04 | 1.6s
+2026-11-18 11:20:25 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época   7/25 | perda=0.1859 | feat_std=0.0583 (ref 0.0884) | lr=9.21e-04 | 1.6s
+2026-11-18 11:20:26 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época   8/25 | perda=0.1788 | feat_std=0.0581 (ref 0.0884) | lr=8.78e-04 | 1.6s
+2026-11-18 11:20:28 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época   9/25 | perda=0.1724 | feat_std=0.0581 (ref 0.0884) | lr=8.28e-04 | 1.6s
+2026-11-18 11:20:30 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época  10/25 | perda=0.1682 | feat_std=0.0581 (ref 0.0884) | lr=7.71e-04 | 1.6s
+2026-11-18 11:20:31 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época  11/25 | perda=0.1635 | feat_std=0.0581 (ref 0.0884) | lr=7.08e-04 | 1.6s
+2026-11-18 11:20:33 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época  12/25 | perda=0.1600 | feat_std=0.0582 (ref 0.0884) | lr=6.42e-04 | 1.6s
+2026-11-18 11:20:34 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época  13/25 | perda=0.1560 | feat_std=0.0581 (ref 0.0884) | lr=5.72e-04 | 1.6s
+2026-11-18 11:20:36 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época  14/25 | perda=0.1530 | feat_std=0.0580 (ref 0.0884) | lr=5.01e-04 | 2.0s
+2026-11-18 11:20:38 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época  15/25 | perda=0.1514 | feat_std=0.0579 (ref 0.0884) | lr=4.30e-04 | 1.9s
+2026-11-18 11:20:40 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época  16/25 | perda=0.1486 | feat_std=0.0579 (ref 0.0884) | lr=3.60e-04 | 1.7s
+2026-11-18 11:20:42 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época  17/25 | perda=0.1458 | feat_std=0.0578 (ref 0.0884) | lr=2.93e-04 | 1.9s
+2026-11-18 11:20:44 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época  18/25 | perda=0.1451 | feat_std=0.0577 (ref 0.0884) | lr=2.30e-04 | 1.8s
+2026-11-18 11:20:46 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época  19/25 | perda=0.1421 | feat_std=0.0576 (ref 0.0884) | lr=1.73e-04 | 2.1s
+2026-11-18 11:20:48 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época  20/25 | perda=0.1420 | feat_std=0.0575 (ref 0.0884) | lr=1.23e-04 | 1.7s
+2026-11-18 11:20:49 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época  21/25 | perda=0.1405 | feat_std=0.0574 (ref 0.0884) | lr=7.98e-05 | 1.7s
+2026-11-18 11:20:51 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época  22/25 | perda=0.1396 | feat_std=0.0574 (ref 0.0884) | lr=4.55e-05 | 2.0s
+2026-11-18 11:20:53 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época  23/25 | perda=0.1391 | feat_std=0.0574 (ref 0.0884) | lr=2.05e-05 | 2.0s
+2026-11-18 11:20:55 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época  24/25 | perda=0.1386 | feat_std=0.0573 (ref 0.0884) | lr=5.21e-06 | 2.0s
+2026-11-18 11:20:57 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] época  25/25 | perda=0.1380 | feat_std=0.0573 (ref 0.0884) | lr=7.22e-10 | 2.0s
+2026-11-18 11:20:57 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.001] treino concluído em 0.7 min (0.0122 GPU-h), pico de memória 0.21 GB
+2026-11-18 11:20:59 | INFO    | mo433.tune                   | [tune] linha C lr=0.001 (25 épocas): k-NN validação = 0.8653
+2026-11-18 11:20:59 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] carregando 21600 imagens x 8 views do pool para a RAM...
+2026-11-18 11:21:01 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] linha=C | aluno=small (m=0.50, 700176 params, dim=128) | cabeça=1055104 params
+2026-11-18 11:21:01 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] pool=21600 imgs (fração 100%) | K=8 | batch=256 | passos/época=84 | épocas=25 | passos totais=2100 | lr=2.00e-03 | wd=0.050 | warm-up=252 passos
+2026-11-18 11:21:04 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época   1/25 | perda=0.4103 | feat_std=0.0431 (ref 0.0884) | lr=6.67e-04 | 2.2s
+2026-11-18 11:21:05 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época   2/25 | perda=0.2543 | feat_std=0.0524 (ref 0.0884) | lr=1.33e-03 | 1.8s
+2026-11-18 11:21:07 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época   3/25 | perda=0.2221 | feat_std=0.0573 (ref 0.0884) | lr=2.00e-03 | 2.0s
+2026-11-18 11:21:09 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época   4/25 | perda=0.2014 | feat_std=0.0589 (ref 0.0884) | lr=1.99e-03 | 2.0s
+2026-11-18 11:21:11 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época   5/25 | perda=0.1865 | feat_std=0.0589 (ref 0.0884) | lr=1.96e-03 | 1.9s
+2026-11-18 11:21:13 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época   6/25 | perda=0.1790 | feat_std=0.0593 (ref 0.0884) | lr=1.91e-03 | 1.9s
+2026-11-18 11:21:15 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época   7/25 | perda=0.1714 | feat_std=0.0591 (ref 0.0884) | lr=1.84e-03 | 1.8s
+2026-11-18 11:21:17 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época   8/25 | perda=0.1639 | feat_std=0.0589 (ref 0.0884) | lr=1.76e-03 | 1.9s
+2026-11-18 11:21:19 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época   9/25 | perda=0.1575 | feat_std=0.0590 (ref 0.0884) | lr=1.66e-03 | 1.9s
+2026-11-18 11:21:21 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época  10/25 | perda=0.1531 | feat_std=0.0590 (ref 0.0884) | lr=1.54e-03 | 1.9s
+2026-11-18 11:21:23 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época  11/25 | perda=0.1493 | feat_std=0.0590 (ref 0.0884) | lr=1.42e-03 | 1.9s
+2026-11-18 11:21:24 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época  12/25 | perda=0.1452 | feat_std=0.0590 (ref 0.0884) | lr=1.28e-03 | 1.9s
+2026-11-18 11:21:26 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época  13/25 | perda=0.1415 | feat_std=0.0589 (ref 0.0884) | lr=1.14e-03 | 1.9s
+2026-11-18 11:21:28 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época  14/25 | perda=0.1384 | feat_std=0.0588 (ref 0.0884) | lr=1.00e-03 | 1.9s
+2026-11-18 11:21:30 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época  15/25 | perda=0.1366 | feat_std=0.0586 (ref 0.0884) | lr=8.59e-04 | 1.6s
+2026-11-18 11:21:31 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época  16/25 | perda=0.1337 | feat_std=0.0585 (ref 0.0884) | lr=7.20e-04 | 1.7s
+2026-11-18 11:21:33 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época  17/25 | perda=0.1308 | feat_std=0.0583 (ref 0.0884) | lr=5.86e-04 | 1.6s
+2026-11-18 11:21:35 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época  18/25 | perda=0.1299 | feat_std=0.0583 (ref 0.0884) | lr=4.61e-04 | 1.6s
+2026-11-18 11:21:36 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época  19/25 | perda=0.1269 | feat_std=0.0581 (ref 0.0884) | lr=3.46e-04 | 1.7s
+2026-11-18 11:21:38 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época  20/25 | perda=0.1262 | feat_std=0.0580 (ref 0.0884) | lr=2.45e-04 | 1.6s
+2026-11-18 11:21:40 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época  21/25 | perda=0.1245 | feat_std=0.0580 (ref 0.0884) | lr=1.60e-04 | 1.6s
+2026-11-18 11:21:41 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época  22/25 | perda=0.1237 | feat_std=0.0579 (ref 0.0884) | lr=9.11e-05 | 1.6s
+2026-11-18 11:21:43 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época  23/25 | perda=0.1228 | feat_std=0.0578 (ref 0.0884) | lr=4.10e-05 | 1.6s
+2026-11-18 11:21:45 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época  24/25 | perda=0.1224 | feat_std=0.0578 (ref 0.0884) | lr=1.04e-05 | 1.6s
+2026-11-18 11:21:46 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] época  25/25 | perda=0.1219 | feat_std=0.0578 (ref 0.0884) | lr=1.44e-09 | 1.6s
+2026-11-18 11:21:46 | INFO    | mo433.train                  | [C_small_seed0_tune_lr0.002] treino concluído em 0.7 min (0.0124 GPU-h), pico de memória 0.21 GB
+2026-11-18 11:21:48 | INFO    | mo433.tune                   | [tune] linha C lr=0.002 (25 épocas): k-NN validação = 0.8998
+2026-11-18 11:21:48 | INFO    | mo433.tune                   | [tune] lr escolhidos (gravados em config.json): B=0.002 C=0.002
+2026-11-18 11:21:48 | INFO    | mo433.cli                    | Etapa 'tune' concluída.

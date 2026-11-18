@@ -1,0 +1,31 @@
+{
+  "name": "B_small_seed1_data50",
+  "row": "B",
+  "size": "small",
+  "seed": 1,
+  "data_frac": 0.5,
+  "tag": "",
+  "epochs": 100,
+  "steps": 4200,
+  "batch_size": 256,
+  "lr": 0.002,
+  "n_pool": 10800,
+  "n_views": 8,
+  "params": 700176,
+  "feat_dim": 128,
+  "train_seconds": 272.0734024000121,
+  "train_gpu_hours": 0.07557594511111448,
+  "peak_mem_gb": 0.6977791786193848,
+  "final_loss": 17.39179597582136,
+  "collapse_check": {
+    "knn_acc": 0.8222222222222222,
+    "chance": 0.1,
+    "emb_std": 0.053836263716220856,
+    "emb_std_ref": 0.08838834764831843,
+    "emb_std_ratio": 0.6090877943597929,
+    "nmi": 0.5609693777249357,
+    "ari": 0.4533851412534875,
+    "passed": true,
+    "problems": []
+  }
+}
