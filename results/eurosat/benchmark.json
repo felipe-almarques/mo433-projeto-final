@@ -1,0 +1,94 @@
+{
+  "hardware": {
+    "python": "3.13.7",
+    "torch": "2.11.0+cu128",
+    "cuda_available": true,
+    "cpu_count": 12,
+    "platform": "win32",
+    "gpu": "NVIDIA GeForce RTX 4060",
+    "gpu_memory_gb": 8.0,
+    "cuda": "12.8",
+    "cudnn": 91900
+  },
+  "batch_size": 256,
+  "precision": "bf16 (alunos), fp16 (professor)",
+  "loader_imgs_per_s": 3159.083159963287,
+  "step_imgs_per_s": {
+    "B_small": 4502.605839182082,
+    "C_small": 16536.63445999968,
+    "B_large": 2300.525975711325,
+    "C_large": 6343.062294106157
+  },
+  "encoders": {
+    "student_small": {
+      "params": 700176,
+      "input_res": 64,
+      "feat_dim": 128,
+      "gflops": 0.070090752,
+      "widths": [
+        16,
+        32,
+        64,
+        128
+      ],
+      "latency_gpu": {
+        "ms_per_batch": 3.555982000543736,
+        "ms_per_image": 0.013890554689623968,
+        "imgs_per_s": 71991.36552458807
+      },
+      "latency_cpu": {
+        "ms_per_batch": 2.4525750006432645,
+        "ms_per_image": 2.4525750006432645,
+        "imgs_per_s": 407.7347276791612
+      }
+    },
+    "student_large": {
+      "params": 6284592,
+      "input_res": 64,
+      "feat_dim": 384,
+      "gflops": 0.625508352,
+      "widths": [
+        48,
+        96,
+        192,
+        384
+      ],
+      "latency_gpu": {
+        "ms_per_batch": 14.46479000034742,
+        "ms_per_image": 0.05650308593885711,
+        "imgs_per_s": 17698.148399931924
+      },
+      "latency_cpu": {
+        "ms_per_batch": 7.4908499998855405,
+        "ms_per_image": 7.4908499998855405,
+        "imgs_per_s": 133.49619869778195
+      }
+    },
+    "teacher": {
+      "params": 21665664,
+      "input_res": 224,
+      "feat_dim": 384,
+      "gflops": 9.196996608,
+      "latency_gpu": {
+        "ms_per_batch": 148.49878199980594,
+        "ms_per_image": 0.580073367186742,
+        "imgs_per_s": 1723.9198635335242
+      },
+      "latency_cpu": {
+        "ms_per_batch": 47.28852500120411,
+        "ms_per_image": 47.28852500120411,
+        "imgs_per_s": 21.146779265678873
+      }
+    }
+  },
+  "teacher_imgs_per_s": 1723.9198635335242,
+  "projection": {
+    "view_generation_min": 0.9116569125180831,
+    "teacher_cache_min": 1.6706112974978167,
+    "one_run_B_small_min": 7.995370078083397,
+    "one_run_C_small_min": 2.176984687366712,
+    "one_run_B_large_min": 15.64859531258662,
+    "one_run_C_large_min": 5.675492109457991,
+    "total_training_hours_estimate": 1.8721687820112536
+  }
+}

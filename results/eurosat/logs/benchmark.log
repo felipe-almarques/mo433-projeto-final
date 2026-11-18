@@ -1,0 +1,43 @@
+2026-11-18 11:10:50 | INFO    | mo433.benchmark              | ==========================================================================================
+2026-11-18 11:10:50 | INFO    | mo433.benchmark              | Início da etapa 'benchmark' (pid=37716)
+2026-11-18 11:10:50 | INFO    | mo433.benchmark              | Linha de comando: C:\Users\felip\OneDrive\Desktop\Arquivos\Projetos\UnsupervisedLearning\projeto\mo433_projeto_final\src\mo433_projeto_final\__main__.py benchmark --dataset eurosat
+2026-11-18 11:10:50 | INFO    | mo433.cli                    | Dataset=eurosat | hardware={'python': '3.13.7', 'torch': '2.11.0+cu128', 'cuda_available': True, 'cpu_count': 12, 'platform': 'win32', 'gpu': 'NVIDIA GeForce RTX 4060', 'gpu_memory_gb': 8.0, 'cuda': '12.8', 'cudnn': 91900}
+2026-11-18 11:10:50 | INFO    | mo433.cli                    | Configuração: {'dataset': 'eurosat', 'img_size': 64, 'n_unlabeled': None, 'test_fraction': 0.2, 'split_seed': 0, 'n_views': 8, 'min_scale': 0.2, 'epochs': 60, 'batch_size': 256, 'lr': 0.001, 'weight_decay': 0.05, 'warmup_epochs': 3, 'vicreg_hidden': 2048, 'vicreg_out': 2048, 'distill_hidden': 2048, 'lr_B': None, 'lr_C': None, 'student_sizes': {'small': 0.5, 'large': 1.5}, 'seeds': {'small': [0, 1, 2], 'large': [0, 1]}, 'teacher_name': 'vit_small_patch16_224.dino', 'teacher_res': 224, 'label_fractions': [0.01, 0.1, 0.5, 1.0], 'n_draws': 3, 'rbf_max_samples': 10000, 'ablation_data_fractions': [0.5], 'num_workers': 6, 'teacher_pretrain_gpu_hours': 2688.0}
+2026-11-18 11:10:51 | INFO    | mo433.benchmark              | Hardware: {'python': '3.13.7', 'torch': '2.11.0+cu128', 'cuda_available': True, 'cpu_count': 12, 'platform': 'win32', 'gpu': 'NVIDIA GeForce RTX 4060', 'gpu_memory_gb': 8.0, 'cuda': '12.8', 'cudnn': 91900}
+2026-11-18 11:11:03 | INFO    | mo433.benchmark              | (i) DataLoader + aumento lightly (6 workers): 3408 img/s
+2026-11-18 11:11:07 | INFO    | mo433.benchmark              | (ii) passo de treino B/small: 4505 img/s
+2026-11-18 11:11:07 | INFO    | mo433.benchmark              | (ii) passo de treino C/small: 18178 img/s
+2026-11-18 11:11:10 | INFO    | mo433.benchmark              | (ii) passo de treino B/large: 2315 img/s
+2026-11-18 11:11:11 | INFO    | mo433.benchmark              | (ii) passo de treino C/large: 6344 img/s
+2026-11-18 11:11:11 | INFO    | timm.models._builder         | Loading pretrained weights from Hugging Face hub (timm/vit_small_patch16_224.dino)
+2026-11-18 11:11:12 | INFO    | httpx2                       | HTTP Request: HEAD https://huggingface.co/timm/vit_small_patch16_224.dino/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+2026-11-18 11:11:12 | WARNING | huggingface_hub.utils._http  | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-11-18 11:11:12 | INFO    | timm.models._hub             | [timm/vit_small_patch16_224.dino] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2026-11-18 11:11:12 | INFO    | mo433.models                 | Professor vit_small_patch16_224.dino carregado (pretrained=True): 21665664 params, dim=384, pool=token
+2026-11-18 11:11:12 | INFO    | mo433.benchmark              | student_small  params=0.70M | 0.070 GFLOPs/img @64px | dim=128 | GPU b256 fp16: 3.19 ms/batch (80188 img/s) | CPU b1: 2.39 ms
+2026-11-18 11:11:14 | INFO    | mo433.benchmark              | student_large  params=6.28M | 0.626 GFLOPs/img @64px | dim=384 | GPU b256 fp16: 14.47 ms/batch (17690 img/s) | CPU b1: 7.59 ms
+2026-11-18 11:11:24 | INFO    | mo433.benchmark              | teacher        params=21.67M | 9.197 GFLOPs/img @224px | dim=384 | GPU b256 fp16: 149.45 ms/batch (1713 img/s) | CPU b1: 49.36 ms
+2026-11-18 11:11:24 | INFO    | mo433.benchmark              | (iii) forward do professor @224px fp16: 1713 img/s
+2026-11-18 11:11:24 | INFO    | mo433.benchmark              | Projeção (minutos, sem I/O/avaliação): {'view_generation_min': 0.8, 'teacher_cache_min': 1.7, 'one_run_B_small_min': 4.8, 'one_run_C_small_min': 1.2, 'one_run_B_large_min': 9.3, 'one_run_C_large_min': 3.4, 'total_training_hours_estimate': 1.1}
+2026-11-18 11:11:24 | INFO    | mo433.cli                    | Etapa 'benchmark' concluída.
+2026-11-18 11:11:37 | INFO    | mo433.benchmark              | ==========================================================================================
+2026-11-18 11:11:37 | INFO    | mo433.benchmark              | Início da etapa 'benchmark' (pid=20764)
+2026-11-18 11:11:37 | INFO    | mo433.benchmark              | Linha de comando: C:\Users\felip\OneDrive\Desktop\Arquivos\Projetos\UnsupervisedLearning\projeto\mo433_projeto_final\src\mo433_projeto_final\__main__.py benchmark --dataset eurosat --epochs 100
+2026-11-18 11:11:37 | INFO    | mo433.cli                    | Dataset=eurosat | hardware={'python': '3.13.7', 'torch': '2.11.0+cu128', 'cuda_available': True, 'cpu_count': 12, 'platform': 'win32', 'gpu': 'NVIDIA GeForce RTX 4060', 'gpu_memory_gb': 8.0, 'cuda': '12.8', 'cudnn': 91900}
+2026-11-18 11:11:37 | INFO    | mo433.cli                    | Configuração: {'dataset': 'eurosat', 'img_size': 64, 'n_unlabeled': None, 'test_fraction': 0.2, 'split_seed': 0, 'n_views': 8, 'min_scale': 0.2, 'epochs': 100, 'batch_size': 256, 'lr': 0.001, 'weight_decay': 0.05, 'warmup_epochs': 3, 'vicreg_hidden': 2048, 'vicreg_out': 2048, 'distill_hidden': 2048, 'lr_B': None, 'lr_C': None, 'student_sizes': {'small': 0.5, 'large': 1.5}, 'seeds': {'small': [0, 1, 2], 'large': [0, 1]}, 'teacher_name': 'vit_small_patch16_224.dino', 'teacher_res': 224, 'label_fractions': [0.01, 0.1, 0.5, 1.0], 'n_draws': 3, 'rbf_max_samples': 10000, 'ablation_data_fractions': [0.5], 'num_workers': 6, 'teacher_pretrain_gpu_hours': 2688.0}
+2026-11-18 11:11:39 | INFO    | mo433.benchmark              | Hardware: {'python': '3.13.7', 'torch': '2.11.0+cu128', 'cuda_available': True, 'cpu_count': 12, 'platform': 'win32', 'gpu': 'NVIDIA GeForce RTX 4060', 'gpu_memory_gb': 8.0, 'cuda': '12.8', 'cudnn': 91900}
+2026-11-18 11:11:51 | INFO    | mo433.benchmark              | (i) DataLoader + aumento lightly (6 workers): 3159 img/s
+2026-11-18 11:11:53 | INFO    | mo433.benchmark              | (ii) passo de treino B/small: 4503 img/s
+2026-11-18 11:11:54 | INFO    | mo433.benchmark              | (ii) passo de treino C/small: 16537 img/s
+2026-11-18 11:11:57 | INFO    | mo433.benchmark              | (ii) passo de treino B/large: 2301 img/s
+2026-11-18 11:11:58 | INFO    | mo433.benchmark              | (ii) passo de treino C/large: 6343 img/s
+2026-11-18 11:11:58 | INFO    | timm.models._builder         | Loading pretrained weights from Hugging Face hub (timm/vit_small_patch16_224.dino)
+2026-11-18 11:11:58 | INFO    | httpx2                       | HTTP Request: HEAD https://huggingface.co/timm/vit_small_patch16_224.dino/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+2026-11-18 11:11:58 | INFO    | timm.models._hub             | [timm/vit_small_patch16_224.dino] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2026-11-18 11:11:58 | INFO    | mo433.models                 | Professor vit_small_patch16_224.dino carregado (pretrained=True): 21665664 params, dim=384, pool=token
+2026-11-18 11:11:59 | INFO    | mo433.benchmark              | student_small  params=0.70M | 0.070 GFLOPs/img @64px | dim=128 | GPU b256 fp16: 3.56 ms/batch (71991 img/s) | CPU b1: 2.45 ms
+2026-11-18 11:12:00 | INFO    | mo433.benchmark              | student_large  params=6.28M | 0.626 GFLOPs/img @64px | dim=384 | GPU b256 fp16: 14.46 ms/batch (17698 img/s) | CPU b1: 7.49 ms
+2026-11-18 11:12:11 | INFO    | mo433.benchmark              | teacher        params=21.67M | 9.197 GFLOPs/img @224px | dim=384 | GPU b256 fp16: 148.50 ms/batch (1724 img/s) | CPU b1: 47.29 ms
+2026-11-18 11:12:11 | INFO    | mo433.benchmark              | (iii) forward do professor @224px fp16: 1724 img/s
+2026-11-18 11:12:11 | INFO    | mo433.benchmark              | Projeção (minutos, sem I/O/avaliação): {'view_generation_min': 0.9, 'teacher_cache_min': 1.7, 'one_run_B_small_min': 8.0, 'one_run_C_small_min': 2.2, 'one_run_B_large_min': 15.6, 'one_run_C_large_min': 5.7, 'total_training_hours_estimate': 1.9}
+2026-11-18 11:12:11 | INFO    | mo433.cli                    | Etapa 'benchmark' concluída.

@@ -1,0 +1,9 @@
+{
+  "teacher_cache_seconds": 104.88309309998294,
+  "teacher_cache_gpu_hours": 0.02913419252777304,
+  "teacher_eval_seconds": 17.866064599977108,
+  "n_images": 21600,
+  "n_views": 8,
+  "teacher_imgs_per_s": 1647.54866482888,
+  "teacher_pretrain_gpu_hours_published": 2688.0
+}
