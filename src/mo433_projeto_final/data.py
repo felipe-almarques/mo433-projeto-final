@@ -42,6 +42,7 @@ def prepare_arrays(cfg: Config) -> None:
     from torchvision.datasets import EuroSAT
 
     ds = EuroSAT(root=str(DATA_DIR), download=True)
+    log.info("EuroSAT carregado: %d imagens, classes=%s", len(ds), ds.classes)
     X = np.stack([np.asarray(Image.open(p).convert("RGB"), dtype=np.uint8)
                   for p, _ in tqdm(ds.samples, desc="lendo EuroSAT")])
     y = np.asarray(ds.targets, dtype=np.int64)
@@ -54,6 +55,8 @@ def prepare_arrays(cfg: Config) -> None:
         np.save(out / f"{name}.npy", arr)
         log.info("  salvo %-12s shape=%s", name, arr.shape)
     (out / "classes.txt").write_text("\n".join(ds.classes), encoding="utf-8")
+    log.info("Distribuição de classes: treino=%s | teste=%s",
+             np.bincount(y[i_tr]).tolist(), np.bincount(y[i_te]).tolist())
 
 
 def load_split(cfg: Config, split: str) -> tuple[np.ndarray, np.ndarray]:
@@ -81,7 +84,9 @@ def make_label_subsets(cfg: Config) -> None:
             else:
                 subsets[(frac, draw)] = train_test_split(np.arange(len(y)), train_size=frac, stratify=y,
                                                          random_state=draw)[0]
-            log.info("  subset frac=%.2f draw=%d: n=%d", frac, draw, len(subsets[(frac, draw)]))
+            per_class = np.bincount(y[subsets[(frac, draw)]])
+            log.info("  subset frac=%.2f draw=%d: n=%d (por classe: min=%d max=%d)",
+                     frac, draw, len(subsets[(frac, draw)]), per_class.min(), per_class.max())
     with open(path, "wb") as f:
         pickle.dump(subsets, f)
 
@@ -124,6 +129,7 @@ def generate_views(cfg: Config) -> None:
     tmp = path.with_suffix(".tmp.npy")
     views = np.lib.format.open_memmap(tmp, mode="w+", dtype=np.uint8,
                                       shape=(len(ds), cfg.n_views, cfg.img_size, cfg.img_size, 3))
+    log.info("Gerando %d views x %d imagens (%.2f GB em disco)...", cfg.n_views, len(ds), views.nbytes / 1024**3)
     for k in range(cfg.n_views):
         loader = DataLoader(ds, batch_size=512, shuffle=False, num_workers=cfg.num_workers,
                             generator=torch.Generator().manual_seed(1000 + k))

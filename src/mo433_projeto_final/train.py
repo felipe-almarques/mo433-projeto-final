@@ -153,13 +153,15 @@ def train_student(cfg: Config, row: str, size: str, seed: int, data_frac: float 
                "feat_std": sums.pop("feat_std") / steps_per_epoch, "seconds": time.perf_counter() - t_ep}
         rec.update({key: v / steps_per_epoch for key, v in sums.items()})
         history.append(rec)
-        log.info("[%s] época %3d/%d | perda=%.4f | feat_std=%.4f (ref %.4f) | %.1fs", name, epoch + 1, epochs,
-                 rec["loss"], rec["feat_std"], 1 / math.sqrt(student.num_features), rec["seconds"])
+        log.info("[%s] época %3d/%d | perda=%.4f%s | feat_std=%.4f (ref %.4f) | lr=%.2e | %.1fs", name, epoch + 1,
+                 epochs, rec["loss"], "".join(f" | {key}={sums[key] / steps_per_epoch:.4f}" for key in sums),
+                 rec["feat_std"], 1 / math.sqrt(student.num_features), rec["lr_end"], rec["seconds"])
 
     sync(device)
     train_seconds = time.perf_counter() - t0
     peak_mem = torch.cuda.max_memory_allocated() / 1024**3 if device.type == "cuda" else 0.0
-    log.info("[%s] treino concluído em %.1f min (%.4f GPU-h)", name, train_seconds / 60, train_seconds / 3600)
+    log.info("[%s] treino concluído em %.1f min (%.4f GPU-h), pico de memória %.2f GB",
+             name, train_seconds / 60, train_seconds / 3600, peak_mem)
 
     torch.save({"backbone": student.state_dict(), "head": head.state_dict(), "row": row, "size": size,
                 "seed": seed, "data_frac": data_frac, "epochs": epochs, "lr": lr}, out_dir / "checkpoint.pt")
@@ -226,3 +228,4 @@ def run_tuning(cfg: Config) -> None:
     cfg.save()
     save_json({"grid": LR_GRID, "epochs": epochs, "val_knn": results, "chosen": best},
               cfg.results_dir / "tuning.json")
+    log.info("[tune] lr escolhidos (gravados em config.json): B=%g C=%g", best["B"], best["C"])

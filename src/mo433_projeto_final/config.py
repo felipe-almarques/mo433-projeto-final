@@ -103,21 +103,10 @@ def run_name(row: str, size: str, seed: int, data_frac: float = 1.0, tag: str = 
 
 
 # ----------------------------------------------------------------------------- JSON
-def _to_builtin(o):
-    if isinstance(o, np.integer):
-        return int(o)
-    if isinstance(o, np.floating):
-        return float(o)
-    if isinstance(o, np.ndarray):
-        return o.tolist()
-    if isinstance(o, Path):
-        return str(o)
-    raise TypeError(f"Tipo não serializável: {type(o)}")
-
-
 def save_json(obj, path: Path) -> None:
+    """JSON indentado; escalares/arrays numpy viram tipos nativos (``.tolist()``)."""
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(obj, indent=2, ensure_ascii=False, default=_to_builtin), encoding="utf-8")
+    path.write_text(json.dumps(obj, indent=2, ensure_ascii=False, default=lambda o: o.tolist()), encoding="utf-8")
 
 
 def load_json(path: Path):

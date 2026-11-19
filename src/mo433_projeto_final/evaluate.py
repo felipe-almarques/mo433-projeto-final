@@ -78,9 +78,15 @@ def tune_svm_hparams(F_train: np.ndarray, y_train: np.ndarray, rbf_max: int) -> 
     rbf = GridSearchCV(SVC(kernel="rbf"), {"C": RBF_C_GRID, "gamma": [m / d for m in RBF_GAMMA_MULT_GRID]},
                        cv=cv, n_jobs=-1)
     rbf.fit(Xs, ys)
+    for search in (lin, rbf):
+        for params, score in zip(search.cv_results_["params"], search.cv_results_["mean_test_score"]):
+            log.info("CV %s: %s -> %.4f", type(search.estimator).__name__, params, score)
     hp = {"linear_C": float(lin.best_params_["C"]), "rbf_C": float(rbf.best_params_["C"]),
           "rbf_gamma_mult": float(rbf.best_params_["gamma"] * d),
           "cv_linear_acc": float(lin.best_score_), "cv_rbf_acc": float(rbf.best_score_)}
+    for key, grid in (("linear_C", LINEAR_C_GRID), ("rbf_C", RBF_C_GRID)):
+        if hp[key] in (grid[0], grid[-1]):
+            log.warning("%s ótimo (%s) está na borda da grade %s", key, hp[key], grid)
     log.info("Hiperparâmetros das sondas CONGELADOS: %s", hp)
     return hp
 
@@ -232,7 +238,9 @@ def run_evaluation(cfg: Config, n_jobs: int = 4) -> None:
     log.info("Sondas: %d encoders a avaliar (%d já prontos)", len(todo), len(encs) - len(todo))
     jobs = (delayed(_evaluate_one)(cfg, e, hp, pdir / f"{e.name}.json") for e in todo)
     for res in Parallel(n_jobs=n_jobs, return_as="generator_unordered")(jobs):
-        log.info("  %-24s NMI=%.3f ARI=%.3f", res["name"], res["diag"]["nmi"], res["diag"]["ari"])
+        lin = {r["fraction"]: r["acc"] for r in res["probes"] if r["probe"] == "linear_svm" and r["draw"] == 0}
+        log.info("  %-24s SVM linear (draw 0): %s | NMI=%.3f ARI=%.3f", res["name"],
+                 " ".join(f"{f:g}->{a:.3f}" for f, a in sorted(lin.items())), res["diag"]["nmi"], res["diag"]["ari"])
 
     # consolida em CSVs
     probe_rows, diag_rows = [], []

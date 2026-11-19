@@ -71,12 +71,14 @@ def main(argv: list[str] | None = None) -> None:
     if args.stage == "train" and None in (args.row, args.size, args.seed):
         p.error("train exige --row, --size e --seed")
 
+    # A config fica salva em config.json e é relida por todas as etapas; só é regravada
+    # na primeira execução ou quando há sobrescritas na linha de comando.
     cfg = Config.load()
-    for key in ("epochs", "num_workers"):
-        if getattr(args, key) is not None:
-            setattr(cfg, key, getattr(args, key))
-    cfg.results_dir.mkdir(parents=True, exist_ok=True)
-    cfg.save()
+    overrides = {k: getattr(args, k) for k in ("epochs", "num_workers") if getattr(args, k) is not None}
+    for key, value in overrides.items():
+        setattr(cfg, key, value)
+    if overrides or not (cfg.results_dir / "config.json").exists():
+        cfg.save()
 
     for stage in PIPELINE if args.stage == "all" else [args.stage]:
         setup_logging(cfg.log_dir, "train_single" if stage == "train" else stage)

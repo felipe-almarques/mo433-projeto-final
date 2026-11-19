@@ -84,8 +84,10 @@ def run_benchmark(cfg: Config) -> None:
     device = get_device()
     res = {"hardware": describe_hardware(), "batch_size": cfg.batch_size,
            "precision": "bf16 (alunos), fp16 (professor)", "loader_imgs_per_s": loader_throughput(cfg)}
+    log.info("DataLoader + aumento lightly (%d workers): %.0f img/s", cfg.num_workers, res["loader_imgs_per_s"])
     res["step_imgs_per_s"] = {f"{row}_{size}": step_throughput(cfg, row, size, device)
                               for size in cfg.student_sizes for row in ("B", "C")}
+    log.info("Passo de treino (img/s): %s", {k: round(v) for k, v in res["step_imgs_per_s"].items()})
 
     # parâmetros, FLOPs e latência (GPU: batch 256 fp16; CPU: batch 1 fp32)
     encoders = {f"student_{s}": (build_student(s, cfg.student_sizes, 0), cfg.img_size) for s in cfg.student_sizes}
@@ -100,6 +102,9 @@ def run_benchmark(cfg: Config) -> None:
         rec["latency_gpu"] = measure_latency(model, r, device, batch=256, amp=True, iters=50)
         rec["latency_cpu"] = measure_latency(model.to("cpu"), r, torch.device("cpu"), batch=1, amp=False, iters=20)
         res["encoders"][name] = rec
+        log.info("%-14s params=%.2fM | %.3f GFLOPs/img @%dpx | dim=%d | GPU b256 fp16: %.0f img/s | CPU b1: %.2f ms",
+                 name, rec["params"] / 1e6, rec["gflops"], r, rec["feat_dim"], rec["latency_gpu"]["imgs_per_s"],
+                 rec["latency_cpu"]["ms_per_batch"])
     res["teacher_imgs_per_s"] = res["encoders"]["teacher"]["latency_gpu"]["imgs_per_s"]
 
     # projeção do tempo do estudo inteiro (minutos)
@@ -114,5 +119,5 @@ def run_benchmark(cfg: Config) -> None:
             total += one * len(seeds) * (1 + sum(cfg.ablation_data_fractions))
     proj["total_training_hours_estimate"] = total / 60
     res["projection"] = proj
-    log.info("Benchmark: %s", res)
+    log.info("Projeção (minutos, sem I/O/avaliação): %s", {k: round(v, 1) for k, v in proj.items()})
     save_json(res, cfg.results_dir / "benchmark.json")

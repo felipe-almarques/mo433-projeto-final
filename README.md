@@ -44,37 +44,32 @@ Testado em Windows 11, Python 3.13, PyTorch 2.11 + CUDA 12.8, GPU **RTX 4060 (8 
 python -m venv .venv
 # Windows: .venv\Scripts\activate    |  Linux/macOS: source .venv/bin/activate
 pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
-pip install -r requirements.txt
-pip install -e . --no-deps          # instala o pacote mo433_projeto_final (src/)
+pip install -e .                    # instala o pacote mo433_projeto_final (src/) e as dependências
 ```
 
 ### Comandos
 
 ```bash
-# 0) teste de fumaça: o pipeline inteiro em dados sintéticos (~5 min) — rode antes de gastar GPU
-bash scripts/smoke_test.sh
-
-# 1) estudo completo (retomável: execuções já concluídas são puladas)
-bash scripts/run_all.sh eurosat              # Linux / Git Bash
-.\scripts\run_all.ps1 -Dataset eurosat       # PowerShell
-EPOCHS=100 bash scripts/run_all.sh eurosat   # configuração usada nos resultados abaixo
+# estudo completo (retomável: o que já foi calculado é pulado)
+python -m mo433_projeto_final all
 
 # ... ou etapa por etapa
-python -m mo433_projeto_final prepare   --dataset eurosat --epochs 100
-python -m mo433_projeto_final teacher   --dataset eurosat
-python -m mo433_projeto_final benchmark --dataset eurosat
-python -m mo433_projeto_final tune      --dataset eurosat
-python -m mo433_projeto_final train-all --dataset eurosat
-python -m mo433_projeto_final evaluate  --dataset eurosat --n-jobs 4
-python -m mo433_projeto_final report    --dataset eurosat
+python -m mo433_projeto_final prepare
+python -m mo433_projeto_final teacher
+python -m mo433_projeto_final benchmark
+python -m mo433_projeto_final tune
+python -m mo433_projeto_final train-all
+python -m mo433_projeto_final evaluate --n-jobs 4
+python -m mo433_projeto_final report
 
 # uma execução isolada
-python -m mo433_projeto_final train --dataset eurosat --row C --size large --seed 1 --data-frac 0.5
+python -m mo433_projeto_final train --row C --size large --seed 1 --data-frac 0.5
 ```
 
-O STL-10 também é suportado (`--dataset stl10`, 96 px, 20k imagens não rotuladas, K=6 views).
+A configuração padrão (`config.py`) é a usada nos resultados abaixo (100 épocas); `--epochs` e
+`--num-workers` a sobrescrevem e ficam gravados em `results/eurosat/config.json`.
 
-### O que cada comando produz (`results/<dataset>/`)
+### O que cada comando produz (`results/eurosat/`)
 
 | Arquivo | Conteúdo | Seção do enunciado |
 |---|---|---|
@@ -108,20 +103,14 @@ O STL-10 também é suportado (`--dataset stl10`, 96 px, 20k imagens não rotula
 ```
 src/mo433_projeto_final/
 ├── __main__.py     CLI: etapas prepare / teacher / benchmark / tune / train(-all) / evaluate / report / all
-├── config.py       configuração única do estudo (orçamento compartilhado por B e C)
-├── utils.py        logging (console + arquivo), sementes, cronômetro de GPU-horas, JSON
-├── data.py         datasets, splits, subconjuntos rotulados, transformações de treino/avaliação, K views
+├── config.py       configuração única do estudo (orçamento compartilhado por B e C) + logging, JSON, sementes
+├── data.py         splits, subconjuntos rotulados, K views, transformações e a ÚNICA função de extração de features
 ├── models.py       família de alunos (projeto próprio), professor timm, projetores
 ├── teacher.py      linha D, checagem de sanidade, cache das features do professor
-├── train.py        laço de treino comum: B (VICReg) e C (destilação por cosseno)
-├── tune.py         grade simétrica de learning rate para B e C
-├── features.py     a ÚNICA função de extração de features (usada para A, B, C e D)
-├── probes.py       k-NN, SVM linear, SVM RBF (pré-processamento e hiperparâmetros idênticos)
-├── diagnostics.py  std dos embeddings, k-means (NMI/ARI), checagem de colapso, t-SNE
+├── train.py        laço de treino comum a B (VICReg) e C (destilação), train-all e ajuste simétrico de lr
+├── evaluate.py     sondas (k-NN, SVM linear, SVM RBF), diagnósticos (std, k-means, t-SNE) para todos os encoders
 ├── benchmark.py    vazão, parâmetros, FLOPs, latência
-├── evaluate.py     orquestra features + sondas + diagnósticos para todos os encoders
 └── report.py       tabelas, figuras e summary.md
-scripts/            run_all.sh, run_all.ps1, smoke_test.sh
 results/            saídas (tabelas, figuras, logs; arquivos grandes ficam fora do git)
 ```
 
@@ -138,8 +127,8 @@ A ordem segue o cronograma da Seção 7 do enunciado.
    (k-NN 95,5%, std/ref 0,75, NMI 0,76 → aprovado) e cache das 8 × 21 600 features do professor.
 4. **Medida de vazão** (`benchmark`): DataLoader com aumento, passo de B e C por tamanho, forward do
    professor; parâmetros, FLOPs e latência; projeção do tempo total → escolha de 100 épocas.
-5. **Teste de fumaça** (`smoke`): o pipeline inteiro em dados sintéticos antes de gastar GPU. Ele
-   revelou (e permitiu corrigir) um bug no gerador sintético cujos rótulos de treino e teste não
+5. **Teste de fumaça**: o pipeline inteiro em dados sintéticos antes de gastar GPU (removido do
+   código na refatoração, após cumprir seu papel). Ele revelou (e permitiu corrigir) um bug no gerador sintético cujos rótulos de treino e teste não
    correspondiam — precisamente o tipo de erro que a checagem "k-NN abaixo do acaso" existe para pegar.
 6. **Ajuste simétrico** (`tune`): mesma grade de lr para B e C, avaliada por k-NN numa validação
    tirada do treino.
@@ -239,7 +228,7 @@ B e C chamam **o mesmo laço** (`train.train_student`) e leem os mesmos campos d
 | precisão | bf16 autocast, `channels_last`, perda em fp32 | idem |
 | views por imagem por passo | 2 (o VICReg compara duas views) | 1 (a mesma dada ao professor) |
 
-**Ajuste de hiperparâmetros simétrico** (`tune.py`): a mesma grade lr ∈ {5e-4, 1e-3, 2e-3} para B e C,
+**Ajuste de hiperparâmetros simétrico** (`train.py`, etapa `tune`): a mesma grade lr ∈ {5e-4, 1e-3, 2e-3} para B e C,
 mesmo protocolo (aluno small, semente 0, 25 épocas), mesmo critério (k-NN numa validação de 20%
 tirada do *treino* rotulado — o teste nunca é usado). Cada linha usa o seu lr vencedor (ver
 resultados). Projetor e épocas não foram ajustados para nenhuma das duas.
@@ -470,7 +459,7 @@ maior; a lacuna absoluta deve ser lida como "neste orçamento", não como um val
   `summary.json`, as retomadas refizeram do zero apenas as execuções incompletas; nenhum número foi
   misturado entre tentativas. Após a primeira interrupção o treino passou a ler as views por
   memory-map em vez de copiá-las para a RAM (mesmos dados, mesma ordem de amostragem).
-* Não rodamos o STL-10 (suportado pelo código) por limite de tempo/memória.
+* Não rodamos o STL-10 por limite de tempo/memória.
 
 ---
 
