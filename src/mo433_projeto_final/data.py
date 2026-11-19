@@ -100,7 +100,8 @@ def _load_stl10(cfg: ExperimentConfig):
     te = STL10(root=str(cfg.data_dir), split="test", download=True)
     rng = np.random.default_rng(cfg.split_seed)
     sel = np.sort(rng.choice(len(unl.data), size=cfg.n_unlabeled or len(unl.data), replace=False))
-    X_unl = as_nhwc(unl)[sel]
+    X_unl = np.ascontiguousarray(unl.data[sel].transpose(0, 2, 3, 1))  # seleciona antes de copiar (RAM)
+    del unl
     return (X_unl, as_nhwc(tr), tr.labels.astype(np.int64), as_nhwc(te), te.labels.astype(np.int64),
             list(tr.classes))
 

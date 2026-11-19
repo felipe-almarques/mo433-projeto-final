@@ -1,0 +1,66 @@
+2026-11-19 12:16:26 | INFO    | mo433.teacher                | ==========================================================================================
+2026-11-19 12:16:26 | INFO    | mo433.teacher                | Início da etapa 'teacher' (pid=46192)
+2026-11-19 12:16:26 | INFO    | mo433.teacher                | Linha de comando: C:\Users\felip\OneDrive\Desktop\Arquivos\Projetos\UnsupervisedLearning\projeto\mo433_projeto_final\src\mo433_projeto_final\__main__.py all --dataset stl10 --epochs 100
+2026-11-19 12:16:27 | INFO    | timm.models._builder         | Loading pretrained weights from Hugging Face hub (timm/vit_small_patch16_224.dino)
+2026-11-19 12:16:28 | INFO    | httpx2                       | HTTP Request: GET https://huggingface.co/api/agent-harnesses "HTTP/1.1 200 OK"
+2026-11-19 12:16:28 | INFO    | httpx2                       | HTTP Request: HEAD https://huggingface.co/timm/vit_small_patch16_224.dino/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+2026-11-19 12:16:28 | INFO    | timm.models._hub             | [timm/vit_small_patch16_224.dino] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2026-11-19 12:16:28 | INFO    | mo433.models                 | Professor vit_small_patch16_224.dino carregado (pretrained=True): 21665664 params, dim=384, pool=token
+2026-11-19 12:16:28 | INFO    | mo433.teacher                | [início] features de avaliação do professor (linha D)
+2026-11-19 12:16:37 | INFO    | mo433.teacher                | [fim]    features de avaliação do professor (linha D) -> 9.1 s (0.0025 h)
+2026-11-19 12:16:37 | INFO    | mo433.teacher                | Features D: treino (5000, 384), teste (8000, 384) (pooling = token CLS, dim=384)
+2026-11-19 12:16:39 | INFO    | mo433.diagnostics            | [sanity:teacher] k-NN=0.9860 (acaso=0.100) | emb_std=0.0458 (ref 1/sqrt(d)=0.0510, razão=0.90) | NMI=0.9001 ARI=0.8772 -> OK
+2026-11-19 12:16:39 | INFO    | mo433.teacher                | [início] cache do professor: 20000 imagens x 6 views a 224px (fp16)
+2026-11-19 12:16:40 | INFO    | mo433.teacher                |   128/20000 imagens
+2026-11-19 12:16:49 | INFO    | mo433.teacher                |   2688/20000 imagens
+2026-11-19 12:16:59 | INFO    | mo433.teacher                |   5248/20000 imagens
+2026-11-19 12:17:09 | INFO    | mo433.teacher                |   7808/20000 imagens
+2026-11-19 12:17:18 | INFO    | mo433.teacher                |   10368/20000 imagens
+2026-11-19 12:17:28 | INFO    | mo433.teacher                |   12928/20000 imagens
+2026-11-19 12:17:37 | INFO    | mo433.teacher                |   15488/20000 imagens
+2026-11-19 12:17:47 | INFO    | mo433.teacher                |   18048/20000 imagens
+2026-11-19 12:17:54 | INFO    | mo433.teacher                | [fim]    cache do professor: 20000 imagens x 6 views a 224px (fp16) -> 74.4 s (0.0207 h)
+2026-11-19 12:17:54 | INFO    | mo433.teacher                | Custo do professor: {'teacher_cache_seconds': 74.4453238999995, 'teacher_cache_gpu_hours': 0.020679256638888747, 'teacher_eval_seconds': 9.136099899995315, 'n_images': 20000, 'n_views': 6, 'teacher_imgs_per_s': 1611.9212559433947, 'teacher_pretrain_gpu_hours_published': 2688.0}
+2026-11-19 12:17:54 | INFO    | mo433.cli                    | Etapa 'teacher' concluída.
+2026-11-19 13:39:16 | INFO    | mo433.teacher                | ==========================================================================================
+2026-11-19 13:39:16 | INFO    | mo433.teacher                | Início da etapa 'teacher' (pid=34364)
+2026-11-19 13:39:16 | INFO    | mo433.teacher                | Linha de comando: C:\Users\felip\OneDrive\Desktop\Arquivos\Projetos\UnsupervisedLearning\projeto\mo433_projeto_final\src\mo433_projeto_final\__main__.py all --dataset stl10 --num-workers 3
+2026-11-19 13:39:17 | INFO    | timm.models._builder         | Loading pretrained weights from Hugging Face hub (timm/vit_small_patch16_224.dino)
+2026-11-19 13:39:18 | INFO    | httpx2                       | HTTP Request: HEAD https://huggingface.co/timm/vit_small_patch16_224.dino/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+2026-11-19 13:39:18 | WARNING | huggingface_hub.utils._http  | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-11-19 13:39:18 | INFO    | timm.models._hub             | [timm/vit_small_patch16_224.dino] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2026-11-19 13:39:18 | INFO    | mo433.models                 | Professor vit_small_patch16_224.dino carregado (pretrained=True): 21665664 params, dim=384, pool=token
+2026-11-19 13:39:18 | INFO    | mo433.teacher                | [início] features de avaliação do professor (linha D)
+2026-11-19 13:39:27 | INFO    | mo433.teacher                | [fim]    features de avaliação do professor (linha D) -> 9.4 s (0.0026 h)
+2026-11-19 13:39:27 | INFO    | mo433.teacher                | Features D: treino (5000, 384), teste (8000, 384) (pooling = token CLS, dim=384)
+2026-11-19 13:39:30 | INFO    | mo433.diagnostics            | [sanity:teacher] k-NN=0.9860 (acaso=0.100) | emb_std=0.0458 (ref 1/sqrt(d)=0.0510, razão=0.90) | NMI=0.9001 ARI=0.8772 -> OK
+2026-11-19 13:39:30 | INFO    | mo433.teacher                | teacher_view_feats.npy já existe — pulando.
+2026-11-19 13:39:30 | INFO    | mo433.cli                    | Etapa 'teacher' concluída.
+2026-11-19 14:26:14 | INFO    | mo433.teacher                | ==========================================================================================
+2026-11-19 14:26:14 | INFO    | mo433.teacher                | Início da etapa 'teacher' (pid=20468)
+2026-11-19 14:26:14 | INFO    | mo433.teacher                | Linha de comando: C:\Users\felip\OneDrive\Desktop\Arquivos\Projetos\UnsupervisedLearning\projeto\mo433_projeto_final\src\mo433_projeto_final\__main__.py all --dataset stl10
+2026-11-19 14:26:15 | INFO    | timm.models._builder         | Loading pretrained weights from Hugging Face hub (timm/vit_small_patch16_224.dino)
+2026-11-19 14:26:15 | INFO    | httpx2                       | HTTP Request: HEAD https://huggingface.co/timm/vit_small_patch16_224.dino/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+2026-11-19 14:26:15 | WARNING | huggingface_hub.utils._http  | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-11-19 14:26:15 | INFO    | timm.models._hub             | [timm/vit_small_patch16_224.dino] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2026-11-19 14:26:16 | INFO    | mo433.models                 | Professor vit_small_patch16_224.dino carregado (pretrained=True): 21665664 params, dim=384, pool=token
+2026-11-19 14:26:16 | INFO    | mo433.teacher                | [início] features de avaliação do professor (linha D)
+2026-11-19 14:26:25 | INFO    | mo433.teacher                | [fim]    features de avaliação do professor (linha D) -> 8.9 s (0.0025 h)
+2026-11-19 14:26:25 | INFO    | mo433.teacher                | Features D: treino (5000, 384), teste (8000, 384) (pooling = token CLS, dim=384)
+2026-11-19 14:26:26 | INFO    | mo433.diagnostics            | [sanity:teacher] k-NN=0.9860 (acaso=0.100) | emb_std=0.0458 (ref 1/sqrt(d)=0.0510, razão=0.90) | NMI=0.9001 ARI=0.8772 -> OK
+2026-11-19 14:26:26 | INFO    | mo433.teacher                | teacher_view_feats.npy já existe — pulando.
+2026-11-19 14:26:26 | INFO    | mo433.cli                    | Etapa 'teacher' concluída.
+2026-11-19 15:11:53 | INFO    | mo433.teacher                | ==========================================================================================
+2026-11-19 15:11:53 | INFO    | mo433.teacher                | Início da etapa 'teacher' (pid=24808)
+2026-11-19 15:11:53 | INFO    | mo433.teacher                | Linha de comando: C:\Users\felip\OneDrive\Desktop\Arquivos\Projetos\UnsupervisedLearning\projeto\mo433_projeto_final\src\mo433_projeto_final\__main__.py all --dataset stl10
+2026-11-19 15:11:57 | INFO    | timm.models._builder         | Loading pretrained weights from Hugging Face hub (timm/vit_small_patch16_224.dino)
+2026-11-19 15:11:57 | INFO    | httpx2                       | HTTP Request: HEAD https://huggingface.co/timm/vit_small_patch16_224.dino/resolve/main/model.safetensors "HTTP/1.1 302 Found"
+2026-11-19 15:11:57 | WARNING | huggingface_hub.utils._http  | Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-11-19 15:11:57 | INFO    | timm.models._hub             | [timm/vit_small_patch16_224.dino] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2026-11-19 15:11:57 | INFO    | mo433.models                 | Professor vit_small_patch16_224.dino carregado (pretrained=True): 21665664 params, dim=384, pool=token
+2026-11-19 15:11:57 | INFO    | mo433.teacher                | [início] features de avaliação do professor (linha D)
+2026-11-19 15:12:06 | INFO    | mo433.teacher                | [fim]    features de avaliação do professor (linha D) -> 8.7 s (0.0024 h)
+2026-11-19 15:12:06 | INFO    | mo433.teacher                | Features D: treino (5000, 384), teste (8000, 384) (pooling = token CLS, dim=384)
+2026-11-19 15:12:08 | INFO    | mo433.diagnostics            | [sanity:teacher] k-NN=0.9860 (acaso=0.100) | emb_std=0.0458 (ref 1/sqrt(d)=0.0510, razão=0.90) | NMI=0.9001 ARI=0.8772 -> OK
+2026-11-19 15:12:08 | INFO    | mo433.teacher                | teacher_view_feats.npy já existe — pulando.
+2026-11-19 15:12:08 | INFO    | mo433.cli                    | Etapa 'teacher' concluída.

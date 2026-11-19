@@ -9,3 +9,4 @@ results/*/runs/*/checkpoint.pt
 results/*/tuning/*/checkpoint.pt
 results/smoke/
 files.zip
+report/

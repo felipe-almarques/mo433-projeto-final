@@ -27,9 +27,25 @@ comando (seção [Como reproduzir](#como-reproduzir)). Cada etapa grava um log c
 3. [Etapas seguidas](#etapas-seguidas)
 4. [Decisões de projeto (e por quê)](#decisões-de-projeto-e-por-quê)
 5. [Resultados (EuroSAT)](#resultados-eurosat)
-6. [Análise](#análise)
-7. [Limitações e ressalvas](#limitações-e-ressalvas)
-8. [Trabalhos relacionados e referências](#trabalhos-relacionados-e-referências)
+6. [Resultados (STL-10)](#resultados-stl-10)
+7. [Análise](#análise)
+8. [Limitações e ressalvas](#limitações-e-ressalvas)
+9. [Trabalhos relacionados e referências](#trabalhos-relacionados-e-referências)
+
+## Entregáveis (Seção 8 do enunciado)
+
+| Entregável | Onde |
+|---|---|
+| Código que regenera todas as tabelas e figuras | `src/mo433_projeto_final/` + comandos em [Como reproduzir](#como-reproduzir) |
+| Tabelas, figuras e logs de cada dataset | `results/eurosat/`, `results/stl10/` (`summary.md` reúne todas as tabelas) |
+| Relatório em formato de artigo (LaTeX) | `report/relatorio.tex` → `report/relatorio.pdf` |
+
+Para compilar o relatório (pasta autocontida: as figuras de `results/` estão copiadas em `report/figures/`; também funciona no Overleaf):
+
+```bash
+cd report
+pdflatex relatorio.tex && pdflatex relatorio.tex   # ou: tectonic relatorio.tex
+```
 
 ---
 
@@ -72,7 +88,10 @@ python -m mo433_projeto_final report    --dataset eurosat
 python -m mo433_projeto_final train --dataset eurosat --row C --size large --seed 1 --data-frac 0.5
 ```
 
-O STL-10 também é suportado (`--dataset stl10`, 96 px, 20k imagens não rotuladas, K=6 views).
+O STL-10 (experimento secundário) usa os mesmos comandos com `--dataset stl10` (96 px, 20k imagens
+não rotuladas, K=6 views); os resultados abaixo usam
+`python -m mo433_projeto_final all --dataset stl10 --epochs 100`. Em máquinas com 16 GB de RAM,
+`--num-workers 3` reduz o consumo de memória sem alterar os resultados.
 
 ### O que cada comando produz (`results/<dataset>/`)
 
@@ -123,6 +142,7 @@ src/mo433_projeto_final/
 └── report.py       tabelas, figuras e summary.md
 scripts/            run_all.sh, run_all.ps1, smoke_test.sh
 results/            saídas (tabelas, figuras, logs; arquivos grandes ficam fora do git)
+report/             relatório em formato de artigo (relatorio.tex + relatorio.pdf)
 ```
 
 ---
@@ -387,6 +407,76 @@ o projetor 2048-2048-2048 do VICReg), mesmo cobrando o cache do professor.
 
 ---
 
+## Resultados (STL-10)
+
+Experimento secundário, exigido pela Seção 4.2 como contraponto: as imagens do STL-10 **vêm do
+ImageNet**, que o professor DINO viu no pré-treino — isso favorece C e D. Mesmo protocolo e código do
+EuroSAT: 20 000 imagens sorteadas (semente fixa) do split `unlabeled`, alunos a 96 px, K = 6 views,
+100 épocas, batch 256; sondas nas 5 000 imagens de treino rotuladas (1% = 5 por classe → k = 5 no
+k-NN), teste nas 8 000 oficiais. Tabelas completas em [`results/stl10/summary.md`](results/stl10/summary.md).
+
+**Checagens.** Professor aprovado com folga (k-NN **98,6%**, NMI **0,90**, std/ref 0,90). **20/20
+treinos aprovados** na checagem de colapso. Ajuste de lr: B e C escolheram de novo 2e-3 (k-NN de
+validação: B 46,4 / 52,2 / 56,1%; C 65,7 / 69,2 / 72,2%). SVM congelados: C linear = 0,01, C RBF = 1,
+γ = 1/d.
+
+### Tabela principal — SVM linear
+
+| Encoder | params | 1% rótulos | 10% | 50% | 100% |
+|---|---|---|---|---|---|
+| A: aleatório (small) | 0,70 M | 18,6 ± 1,3 | 26,0 ± 1,3 | 31,2 ± 0,8 | 33,1 ± 0,8 |
+| A: aleatório (large) | 6,28 M | 21,0 ± 1,0 | 27,3 ± 0,9 | 34,2 ± 0,6 | 37,8 ± 0,4 |
+| B: VICReg (small) | 0,70 M | 45,5 ± 1,4 | 58,6 ± 0,8 | 65,1 ± 0,2 | 66,3 ± 0,3 |
+| B: VICReg (large) | 6,28 M | 52,8 ± 0,9 | 62,8 ± 0,6 | 69,1 ± 0,2 | 71,1 ± 0,2 |
+| C: destilado (small) | 0,70 M | 64,8 ± 0,8 | 76,3 ± 0,4 | 80,7 ± 0,5 | 81,8 ± 0,4 |
+| C: destilado (large) | 6,28 M | 75,9 ± 1,6 | 84,2 ± 0,3 | 87,6 ± 0,3 | 88,8 ± 0,1 |
+| D: professor ViT-S/16 | 21,67 M | **95,7 ± 0,4** | **97,9 ± 0,2** | **98,4 ± 0,1** | **98,8 ± 0,0** |
+
+![Curva de eficiência de rótulos — STL-10](results/stl10/fig_label_efficiency.png)
+
+### Lacuna C − B (SVM linear)
+
+| Aluno | 1% | 10% | 50% | 100% |
+|---|---|---|---|---|
+| small (0,70 M) | **+19,3** ± 1,6 | **+17,7** ± 0,9 | **+15,6** ± 0,5 | **+15,5** ± 0,5 |
+| large (6,28 M) | **+23,0** ± 1,8 | **+21,4** ± 0,7 | **+18,5** ± 0,4 | **+17,7** ± 0,2 |
+
+**24/24 células conclusivas** (2 tamanhos × 4 frações × 3 sondas), com lacunas 3–10× maiores que no
+EuroSAT, e a lacuna **aumenta** com o tamanho do aluno (no EuroSAT diminui). As duas sementes do aluno
+large concordam (100%: C 88,7 / 88,8 vs B 70,9 / 71,3).
+
+### Ablação — metade do pool não rotulado (SVM linear)
+
+| Aluno | rótulos | B 100% → 50% do pool | C 100% → 50% do pool | C − B (pool 100%) | C − B (pool 50%) |
+|---|---|---|---|---|---|
+| small | 1% | 45,5 → 39,3 | 64,8 → 58,7 | +19,3 ± 1,6 | +19,4 ± 1,5 |
+| small | 100% | 66,3 → 60,7 | 81,8 → 75,8 | +15,5 ± 0,5 | +15,1 ± 0,3 |
+| large | 1% | 52,8 → 47,3 | 75,9 → 69,1 | +23,0 ± 1,8 | +21,8 ± 1,7 |
+| large | 100% | 71,1 → 67,3 | 88,8 → 83,6 | +17,7 ± 0,2 | +16,3 ± 0,7 |
+
+Ao contrário do EuroSAT, **B e C perdem de forma parecida** (4–7 pontos) e a lacuna fica estável no
+small e encolhe 1–2 pontos no large: os dois alunos estão longe da saturação.
+
+### Diagnósticos (k-means no teste, k = 10) e custo
+
+| | A small | A large | B small | B large | C small | C large | D |
+|---|---|---|---|---|---|---|---|
+| NMI | 0,07 | 0,10 | 0,37 | 0,42 | 0,52 | 0,67 | **0,90** |
+| ARI | 0,04 | 0,05 | 0,24 | 0,27 | 0,39 | 0,57 | **0,88** |
+
+![t-SNE large — STL-10](results/stl10/fig_tsne_large.png)
+
+GPU-h por treino: B small / large 0,22 / 0,51; C small / large 0,08 / 0,22; cache do professor (120 000
+views) 0,02; estudo inteiro **3,52 GPU-h**. O C small retém **83%** da acurácia linear do professor
+(81,8 vs 98,8) e o C large 90% — contra 98–99% no EuroSAT.
+
+**Leitura conjunta.** O STL-10 confirma o sinal (C > B) mas mostra que a *magnitude* e a *tendência com
+o tamanho* dependem do domínio: quando o professor já conhece as imagens, a vantagem da destilação é
+muito maior e cresce com a capacidade do aluno. Um estudo só em STL-10 superestimaria o valor da
+destilação — por isso o EuroSAT é o experimento principal.
+
+---
+
 ## Análise
 
 Todas as conclusões abaixo valem para **B = VICReg**, EuroSAT a 64 px, 100 épocas e 21,6k imagens.
@@ -470,7 +560,11 @@ maior; a lacuna absoluta deve ser lida como "neste orçamento", não como um val
   `summary.json`, as retomadas refizeram do zero apenas as execuções incompletas; nenhum número foi
   misturado entre tentativas. Após a primeira interrupção o treino passou a ler as views por
   memory-map em vez de copiá-las para a RAM (mesmos dados, mesma ordem de amostragem).
-* Não rodamos o STL-10 (suportado pelo código) por limite de tempo/memória.
+* **STL-10 favorece o professor**: suas imagens vêm do ImageNet, visto pelo DINO no pré-treino; os
+  resultados do STL-10 servem como contraponto ao EuroSAT, não como estimativa do valor da destilação.
+  O estudo STL-10 também foi interrompido por falta de RAM (o OneDrive sincronizando os ~3 GB de views
+  agravava o problema) e retomado da mesma forma; na retomada o DataLoader passou de 6 para 3 workers
+  (registrado em `results/stl10/config.json`; não afeta os resultados).
 
 ---
 

@@ -1,0 +1,20 @@
+{
+  "name": "B_small_seed0_tune_lr0.002",
+  "row": "B",
+  "size": "small",
+  "seed": 0,
+  "data_frac": 1.0,
+  "tag": "tune_lr0.002",
+  "epochs": 25,
+  "steps": 1950,
+  "batch_size": 256,
+  "lr": 0.002,
+  "n_pool": 20000,
+  "n_views": 6,
+  "params": 700176,
+  "feat_dim": 128,
+  "train_seconds": 203.2752701999998,
+  "train_gpu_hours": 0.056465352833333274,
+  "peak_mem_gb": 1.0932931900024414,
+  "final_loss": 18.632332508380596
+}

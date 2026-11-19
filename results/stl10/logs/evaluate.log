@@ -1,0 +1,60 @@
+2026-11-19 17:50:47 | INFO    | mo433.evaluate               | ==========================================================================================
+2026-11-19 17:50:47 | INFO    | mo433.evaluate               | Início da etapa 'evaluate' (pid=24808)
+2026-11-19 17:50:47 | INFO    | mo433.evaluate               | Linha de comando: C:\Users\felip\OneDrive\Desktop\Arquivos\Projetos\UnsupervisedLearning\projeto\mo433_projeto_final\src\mo433_projeto_final\__main__.py all --dataset stl10
+2026-11-19 17:50:48 | INFO    | mo433.evaluate               | Features extraídas: A_small_seed0
+2026-11-19 17:50:49 | INFO    | mo433.evaluate               | Features extraídas: A_small_seed1
+2026-11-19 17:50:50 | INFO    | mo433.evaluate               | Features extraídas: A_small_seed2
+2026-11-19 17:50:53 | INFO    | mo433.evaluate               | Features extraídas: A_large_seed0
+2026-11-19 17:50:57 | INFO    | mo433.evaluate               | Features extraídas: A_large_seed1
+2026-11-19 17:50:57 | INFO    | mo433.evaluate               | 26 encoders com features disponíveis.
+2026-11-19 17:50:57 | INFO    | mo433.evaluate               | Escolhendo C/gamma por CV (3 folds) no treino, encoder de referência B_small_seed0, 100% rótulos
+2026-11-19 17:51:23 | INFO    | mo433.probes                 | CV SVM linear: {'C=0.001': np.float64(0.642), 'C=0.01': np.float64(0.653), 'C=0.1': np.float64(0.6436), 'C=1.0': np.float64(0.6408)}
+2026-11-19 17:51:33 | INFO    | mo433.probes                 | CV SVM RBF: C=0.1    gamma_mult=0.1   -> 0.5842
+2026-11-19 17:51:33 | INFO    | mo433.probes                 | CV SVM RBF: C=0.1    gamma_mult=1.0   -> 0.6348
+2026-11-19 17:51:33 | INFO    | mo433.probes                 | CV SVM RBF: C=0.1    gamma_mult=10.0  -> 0.1174
+2026-11-19 17:51:33 | INFO    | mo433.probes                 | CV SVM RBF: C=1.0    gamma_mult=0.1   -> 0.6510
+2026-11-19 17:51:33 | INFO    | mo433.probes                 | CV SVM RBF: C=1.0    gamma_mult=1.0   -> 0.6868
+2026-11-19 17:51:33 | INFO    | mo433.probes                 | CV SVM RBF: C=1.0    gamma_mult=10.0  -> 0.3954
+2026-11-19 17:51:33 | INFO    | mo433.probes                 | CV SVM RBF: C=10.0   gamma_mult=0.1   -> 0.6710
+2026-11-19 17:51:33 | INFO    | mo433.probes                 | CV SVM RBF: C=10.0   gamma_mult=1.0   -> 0.6862
+2026-11-19 17:51:33 | INFO    | mo433.probes                 | CV SVM RBF: C=10.0   gamma_mult=10.0  -> 0.4336
+2026-11-19 17:51:33 | INFO    | mo433.probes                 | CV SVM RBF: C=100.0  gamma_mult=0.1   -> 0.6554
+2026-11-19 17:51:33 | INFO    | mo433.probes                 | CV SVM RBF: C=100.0  gamma_mult=1.0   -> 0.6864
+2026-11-19 17:51:33 | INFO    | mo433.probes                 | CV SVM RBF: C=100.0  gamma_mult=10.0  -> 0.4336
+2026-11-19 17:51:33 | INFO    | mo433.probes                 | Hiperparâmetros das sondas CONGELADOS: {'linear_C': 0.01, 'rbf_C': 1.0, 'rbf_gamma_mult': 1.0, 'cv_linear_acc': 0.6530009724345647, 'cv_rbf_acc': 0.6868018953232163}
+2026-11-19 17:51:33 | INFO    | mo433.evaluate               | Sondas: 26 encoders a avaliar (0 já em cache), n_jobs=4
+2026-11-19 17:52:00 | INFO    | mo433.evaluate               |   C_small_seed0            dim=128 | SVM linear (draw 0): 0.01->0.650 0.1->0.764 0.5->0.813 1->0.823 | NMI=0.525 ARI=0.390
+2026-11-19 17:52:02 | INFO    | mo433.evaluate               |   B_small_seed0            dim=128 | SVM linear (draw 0): 0.01->0.436 0.1->0.588 0.5->0.651 1->0.659 | NMI=0.365 ARI=0.244
+2026-11-19 17:52:04 | INFO    | mo433.evaluate               |   B_small_seed0_data50     dim=128 | SVM linear (draw 0): 0.01->0.392 0.1->0.526 0.5->0.588 1->0.606 | NMI=0.302 ARI=0.169
+2026-11-19 17:52:08 | INFO    | mo433.evaluate               |   A_small_seed0            dim=128 | SVM linear (draw 0): 0.01->0.178 0.1->0.247 0.5->0.312 1->0.325 | NMI=0.085 ARI=0.041
+2026-11-19 17:52:17 | INFO    | mo433.evaluate               |   C_small_seed0_data50     dim=128 | SVM linear (draw 0): 0.01->0.587 0.1->0.705 0.5->0.746 1->0.755 | NMI=0.487 ARI=0.352
+2026-11-19 17:52:24 | INFO    | mo433.evaluate               |   B_small_seed1            dim=128 | SVM linear (draw 0): 0.01->0.464 0.1->0.592 0.5->0.652 1->0.663 | NMI=0.384 ARI=0.245
+2026-11-19 17:52:27 | INFO    | mo433.evaluate               |   A_small_seed1            dim=128 | SVM linear (draw 0): 0.01->0.180 0.1->0.261 0.5->0.307 1->0.325 | NMI=0.062 ARI=0.036
+2026-11-19 17:52:28 | INFO    | mo433.evaluate               |   B_small_seed1_data50     dim=128 | SVM linear (draw 0): 0.01->0.393 0.1->0.518 0.5->0.595 1->0.609 | NMI=0.294 ARI=0.172
+2026-11-19 17:52:33 | INFO    | mo433.evaluate               |   C_small_seed1            dim=128 | SVM linear (draw 0): 0.01->0.646 0.1->0.762 0.5->0.802 1->0.816 | NMI=0.516 ARI=0.384
+2026-11-19 17:52:41 | INFO    | mo433.evaluate               |   C_small_seed1_data50     dim=128 | SVM linear (draw 0): 0.01->0.580 0.1->0.702 0.5->0.746 1->0.761 | NMI=0.474 ARI=0.343
+2026-11-19 17:52:48 | INFO    | mo433.evaluate               |   B_small_seed2            dim=128 | SVM linear (draw 0): 0.01->0.443 0.1->0.572 0.5->0.648 1->0.667 | NMI=0.368 ARI=0.237
+2026-11-19 17:52:52 | INFO    | mo433.evaluate               |   A_small_seed2            dim=128 | SVM linear (draw 0): 0.01->0.167 0.1->0.267 0.5->0.315 1->0.342 | NMI=0.066 ARI=0.030
+2026-11-19 17:52:54 | INFO    | mo433.evaluate               |   B_small_seed2_data50     dim=128 | SVM linear (draw 0): 0.01->0.402 0.1->0.529 0.5->0.594 1->0.607 | NMI=0.303 ARI=0.192
+2026-11-19 17:52:58 | INFO    | mo433.evaluate               |   C_small_seed2            dim=128 | SVM linear (draw 0): 0.01->0.647 0.1->0.758 0.5->0.809 1->0.815 | NMI=0.528 ARI=0.401
+2026-11-19 17:53:06 | INFO    | mo433.evaluate               |   C_small_seed2_data50     dim=128 | SVM linear (draw 0): 0.01->0.578 0.1->0.696 0.5->0.749 1->0.758 | NMI=0.489 ARI=0.361
+2026-11-19 17:53:45 | INFO    | mo433.evaluate               |   B_large_seed0            dim=384 | SVM linear (draw 0): 0.01->0.510 0.1->0.620 0.5->0.688 1->0.709 | NMI=0.424 ARI=0.273
+2026-11-19 17:53:47 | INFO    | mo433.evaluate               |   C_large_seed0            dim=384 | SVM linear (draw 0): 0.01->0.777 0.1->0.841 0.5->0.876 1->0.887 | NMI=0.665 ARI=0.558
+2026-11-19 17:53:51 | INFO    | mo433.evaluate               |   B_large_seed0_data50     dim=384 | SVM linear (draw 0): 0.01->0.477 0.1->0.588 0.5->0.651 1->0.666 | NMI=0.383 ARI=0.239
+2026-11-19 17:54:01 | INFO    | mo433.evaluate               |   A_large_seed0            dim=384 | SVM linear (draw 0): 0.01->0.205 0.1->0.276 0.5->0.340 1->0.381 | NMI=0.094 ARI=0.043
+2026-11-19 17:54:29 | INFO    | mo433.evaluate               |   C_large_seed0_data50     dim=384 | SVM linear (draw 0): 0.01->0.713 0.1->0.784 0.5->0.824 1->0.837 | NMI=0.585 ARI=0.463
+2026-11-19 17:54:42 | INFO    | mo433.evaluate               |   B_large_seed1            dim=384 | SVM linear (draw 0): 0.01->0.525 0.1->0.627 0.5->0.689 1->0.713 | NMI=0.420 ARI=0.267
+2026-11-19 17:54:57 | INFO    | mo433.evaluate               |   A_large_seed1            dim=384 | SVM linear (draw 0): 0.01->0.192 0.1->0.265 0.5->0.334 1->0.374 | NMI=0.104 ARI=0.047
+2026-11-19 17:54:59 | INFO    | mo433.evaluate               |   B_large_seed1_data50     dim=384 | SVM linear (draw 0): 0.01->0.474 0.1->0.579 0.5->0.654 1->0.679 | NMI=0.380 ARI=0.236
+2026-11-19 17:55:09 | INFO    | mo433.evaluate               |   C_large_seed1            dim=384 | SVM linear (draw 0): 0.01->0.755 0.1->0.848 0.5->0.873 1->0.888 | NMI=0.665 ARI=0.582
+2026-11-19 17:55:24 | INFO    | mo433.evaluate               |   C_large_seed1_data50     dim=384 | SVM linear (draw 0): 0.01->0.691 0.1->0.776 0.5->0.818 1->0.835 | NMI=0.584 ARI=0.446
+2026-11-19 17:55:24 | INFO    | mo433.evaluate               |   D_teacher                dim=384 | SVM linear (draw 0): 0.01->0.961 0.1->0.980 0.5->0.984 1->0.988 | NMI=0.900 ARI=0.877
+2026-11-19 17:55:24 | INFO    | mo433.evaluate               | probe_results.csv (936 linhas) e diagnostics.csv (26 linhas) salvos.
+2026-11-19 17:55:31 | INFO    | mo433.evaluate               | t-SNE calculado: A_small_seed0
+2026-11-19 17:55:38 | INFO    | mo433.evaluate               | t-SNE calculado: B_small_seed0
+2026-11-19 17:55:44 | INFO    | mo433.evaluate               | t-SNE calculado: C_small_seed0
+2026-11-19 17:55:51 | INFO    | mo433.evaluate               | t-SNE calculado: A_large_seed0
+2026-11-19 17:55:58 | INFO    | mo433.evaluate               | t-SNE calculado: B_large_seed0
+2026-11-19 17:56:05 | INFO    | mo433.evaluate               | t-SNE calculado: C_large_seed0
+2026-11-19 17:56:11 | INFO    | mo433.evaluate               | Projeções t-SNE salvas em C:\Users\felip\OneDrive\Desktop\Arquivos\Projetos\UnsupervisedLearning\projeto\mo433_projeto_final\results\stl10\tsne.npz
+2026-11-19 17:56:11 | INFO    | mo433.cli                    | Etapa 'evaluate' concluída.

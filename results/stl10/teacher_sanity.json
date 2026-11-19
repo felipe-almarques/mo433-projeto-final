@@ -1,0 +1,17 @@
+{
+  "knn_acc": 0.986,
+  "chance": 0.1,
+  "emb_std": 0.045798320323228836,
+  "emb_std_ref": 0.051031036307982884,
+  "emb_std_ratio": 0.897460126947579,
+  "nmi": 0.9000997439130557,
+  "ari": 0.8772248030865054,
+  "passed": true,
+  "problems": [],
+  "checkpoint": "vit_small_patch16_224.dino",
+  "params": 21665664,
+  "feat_dim": 384,
+  "pooling": "CLS token (timm global_pool='token')",
+  "input_res": 224,
+  "eval_seconds": 8.707094799989136
+}

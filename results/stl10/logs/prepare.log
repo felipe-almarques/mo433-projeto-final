@@ -1,0 +1,128 @@
+2026-11-19 12:06:50 | INFO    | mo433.prepare                | ==========================================================================================
+2026-11-19 12:06:50 | INFO    | mo433.prepare                | Início da etapa 'prepare' (pid=46192)
+2026-11-19 12:06:50 | INFO    | mo433.prepare                | Linha de comando: C:\Users\felip\OneDrive\Desktop\Arquivos\Projetos\UnsupervisedLearning\projeto\mo433_projeto_final\src\mo433_projeto_final\__main__.py all --dataset stl10 --epochs 100
+2026-11-19 12:14:28 | INFO    | mo433.data                   |   salvo X_unlabeled  shape=(20000, 96, 96, 3) dtype=uint8
+2026-11-19 12:14:28 | INFO    | mo433.data                   |   salvo X_train      shape=(5000, 96, 96, 3) dtype=uint8
+2026-11-19 12:14:28 | INFO    | mo433.data                   |   salvo y_train      shape=(5000,) dtype=int64
+2026-11-19 12:14:28 | INFO    | mo433.data                   |   salvo X_test       shape=(8000, 96, 96, 3) dtype=uint8
+2026-11-19 12:14:28 | INFO    | mo433.data                   |   salvo y_test       shape=(8000,) dtype=int64
+2026-11-19 12:14:28 | INFO    | mo433.data                   | Splits: não rotulado=20000 | treino rotulado=5000 | teste=8000 | classes=10
+2026-11-19 12:14:28 | INFO    | mo433.data                   | Distribuição de classes (treino): [500, 500, 500, 500, 500, 500, 500, 500, 500, 500]
+2026-11-19 12:14:28 | INFO    | mo433.data                   | Distribuição de classes (teste):  [800, 800, 800, 800, 800, 800, 800, 800, 800, 800]
+2026-11-19 12:14:28 | INFO    | mo433.data                   |   subset frac=0.01 draw=0: n=50 (por classe: min=5 max=5)
+2026-11-19 12:14:29 | INFO    | mo433.data                   |   subset frac=0.01 draw=1: n=50 (por classe: min=5 max=5)
+2026-11-19 12:14:29 | INFO    | mo433.data                   |   subset frac=0.01 draw=2: n=50 (por classe: min=5 max=5)
+2026-11-19 12:14:29 | INFO    | mo433.data                   |   subset frac=0.10 draw=0: n=500 (por classe: min=50 max=50)
+2026-11-19 12:14:29 | INFO    | mo433.data                   |   subset frac=0.10 draw=1: n=500 (por classe: min=50 max=50)
+2026-11-19 12:14:29 | INFO    | mo433.data                   |   subset frac=0.10 draw=2: n=500 (por classe: min=50 max=50)
+2026-11-19 12:14:29 | INFO    | mo433.data                   |   subset frac=0.50 draw=0: n=2500 (por classe: min=250 max=250)
+2026-11-19 12:14:29 | INFO    | mo433.data                   |   subset frac=0.50 draw=1: n=2500 (por classe: min=250 max=250)
+2026-11-19 12:14:29 | INFO    | mo433.data                   |   subset frac=0.50 draw=2: n=2500 (por classe: min=250 max=250)
+2026-11-19 12:14:29 | INFO    | mo433.data                   |   subset frac=1.00 draw=0: n=5000 (por classe: min=500 max=500)
+2026-11-19 12:14:29 | INFO    | mo433.data                   |   subset frac=1.00 draw=1: n=5000 (por classe: min=500 max=500)
+2026-11-19 12:14:29 | INFO    | mo433.data                   |   subset frac=1.00 draw=2: n=5000 (por classe: min=500 max=500)
+2026-11-19 12:14:29 | INFO    | mo433.data                   | Subconjuntos rotulados salvos em C:\Users\felip\OneDrive\Desktop\Arquivos\Projetos\UnsupervisedLearning\projeto\mo433_projeto_final\results\stl10\label_subsets.pkl
+2026-11-19 12:14:29 | INFO    | mo433.data                   | Transformação de treino (lightly VICRegViewTransform):
+Compose(
+      RandomResizedCrop(size=(96, 96), scale=(0.2, 1.0), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.0)
+      <lightly.transforms.rotation.RandomRotate object at 0x0000025EBD2451D0>
+      RandomApply(    ColorJitter(brightness=(0.6, 1.4), contrast=(0.6, 1.4), saturation=(0.8, 1.2), hue=(-0.1, 0.1)))
+      RandomGrayscale(p=0.2)
+      <lightly.transforms.solarize.RandomSolarization object at 0x0000025EBD245590>
+      <lightly.transforms.gaussian_blur.GaussianBlur object at 0x0000025EBD2456D0>
+      ToTensor(Compose(
+        ToImage()
+        ToDtype(scale=True)
+  ))
+)
+2026-11-19 12:14:29 | INFO    | mo433.data                   | Gerando 6 views x 20000 imagens (3.09 GB em disco)...
+2026-11-19 12:14:48 | INFO    | mo433.data                   |   view 1/6 pronta
+2026-11-19 12:15:08 | INFO    | mo433.data                   |   view 2/6 pronta
+2026-11-19 12:15:27 | INFO    | mo433.data                   |   view 3/6 pronta
+2026-11-19 12:15:46 | INFO    | mo433.data                   |   view 4/6 pronta
+2026-11-19 12:16:05 | INFO    | mo433.data                   |   view 5/6 pronta
+2026-11-19 12:16:23 | INFO    | mo433.data                   |   view 6/6 pronta
+2026-11-19 12:16:25 | INFO    | mo433.cli                    | Transformação de treino:
+Compose(
+      RandomResizedCrop(size=(96, 96), scale=(0.2, 1.0), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.0)
+      <lightly.transforms.rotation.RandomRotate object at 0x0000025EBD244B90>
+      RandomApply(    ColorJitter(brightness=(0.6, 1.4), contrast=(0.6, 1.4), saturation=(0.8, 1.2), hue=(-0.1, 0.1)))
+      RandomGrayscale(p=0.2)
+      <lightly.transforms.solarize.RandomSolarization object at 0x0000025EBD245E50>
+      <lightly.transforms.gaussian_blur.GaussianBlur object at 0x0000025EBD244E10>
+      ToTensor(Compose(
+        ToImage()
+        ToDtype(scale=True)
+  ))
+)
+2026-11-19 12:16:26 | INFO    | mo433.cli                    | Etapa 'prepare' concluída.
+2026-11-19 13:39:09 | INFO    | mo433.prepare                | ==========================================================================================
+2026-11-19 13:39:09 | INFO    | mo433.prepare                | Início da etapa 'prepare' (pid=34364)
+2026-11-19 13:39:09 | INFO    | mo433.prepare                | Linha de comando: C:\Users\felip\OneDrive\Desktop\Arquivos\Projetos\UnsupervisedLearning\projeto\mo433_projeto_final\src\mo433_projeto_final\__main__.py all --dataset stl10 --num-workers 3
+2026-11-19 13:39:12 | INFO    | mo433.data                   | Arrays do dataset já existem em C:\Users\felip\OneDrive\Desktop\Arquivos\Projetos\UnsupervisedLearning\projeto\mo433_projeto_final\results\stl10\cache — pulando.
+2026-11-19 13:39:12 | INFO    | mo433.data                   | label_subsets.pkl já existe — NÃO será regenerado (mesmos subconjuntos p/ todos).
+2026-11-19 13:39:12 | INFO    | mo433.data                   | views.npy já existe — pulando geração de views.
+2026-11-19 13:39:16 | INFO    | mo433.cli                    | Transformação de treino:
+Compose(
+      RandomResizedCrop(size=(96, 96), scale=(0.2, 1.0), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.0)
+      <lightly.transforms.rotation.RandomRotate object at 0x0000023283862900>
+      RandomApply(    ColorJitter(brightness=(0.6, 1.4), contrast=(0.6, 1.4), saturation=(0.8, 1.2), hue=(-0.1, 0.1)))
+      RandomGrayscale(p=0.2)
+      <lightly.transforms.solarize.RandomSolarization object at 0x0000023283862CF0>
+      <lightly.transforms.gaussian_blur.GaussianBlur object at 0x0000023283862E40>
+      ToTensor(Compose(
+        ToImage()
+        ToDtype(scale=True)
+  ))
+)
+2026-11-19 13:39:16 | INFO    | mo433.cli                    | Etapa 'prepare' concluída.
+2026-11-19 14:26:07 | INFO    | mo433.prepare                | ==========================================================================================
+2026-11-19 14:26:07 | INFO    | mo433.prepare                | Início da etapa 'prepare' (pid=20468)
+2026-11-19 14:26:07 | INFO    | mo433.prepare                | Linha de comando: C:\Users\felip\OneDrive\Desktop\Arquivos\Projetos\UnsupervisedLearning\projeto\mo433_projeto_final\src\mo433_projeto_final\__main__.py all --dataset stl10
+2026-11-19 14:26:10 | INFO    | mo433.data                   | Arrays do dataset já existem em C:\Users\felip\OneDrive\Desktop\Arquivos\Projetos\UnsupervisedLearning\projeto\mo433_projeto_final\results\stl10\cache — pulando.
+2026-11-19 14:26:10 | INFO    | mo433.data                   | label_subsets.pkl já existe — NÃO será regenerado (mesmos subconjuntos p/ todos).
+2026-11-19 14:26:10 | INFO    | mo433.data                   | views.npy já existe — pulando geração de views.
+2026-11-19 14:26:14 | INFO    | mo433.cli                    | Transformação de treino:
+Compose(
+      RandomResizedCrop(size=(96, 96), scale=(0.2, 1.0), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.0)
+      <lightly.transforms.rotation.RandomRotate object at 0x000002A2E64B2900>
+      RandomApply(    ColorJitter(brightness=(0.6, 1.4), contrast=(0.6, 1.4), saturation=(0.8, 1.2), hue=(-0.1, 0.1)))
+      RandomGrayscale(p=0.2)
+      <lightly.transforms.solarize.RandomSolarization object at 0x000002A2E64B2CF0>
+      <lightly.transforms.gaussian_blur.GaussianBlur object at 0x000002A2E64B2E40>
+      ToTensor(Compose(
+        ToImage()
+        ToDtype(scale=True)
+  ))
+)
+2026-11-19 14:26:14 | INFO    | mo433.cli                    | Etapa 'prepare' concluída.
+2026-11-19 15:11:38 | INFO    | mo433.prepare                | ==========================================================================================
+2026-11-19 15:11:38 | INFO    | mo433.prepare                | Início da etapa 'prepare' (pid=24808)
+2026-11-19 15:11:38 | INFO    | mo433.prepare                | Linha de comando: C:\Users\felip\OneDrive\Desktop\Arquivos\Projetos\UnsupervisedLearning\projeto\mo433_projeto_final\src\mo433_projeto_final\__main__.py all --dataset stl10
+2026-11-19 15:11:47 | INFO    | mo433.data                   | Arrays do dataset já existem em C:\Users\felip\OneDrive\Desktop\Arquivos\Projetos\UnsupervisedLearning\projeto\mo433_projeto_final\results\stl10\cache — pulando.
+2026-11-19 15:11:47 | INFO    | mo433.data                   | label_subsets.pkl já existe — NÃO será regenerado (mesmos subconjuntos p/ todos).
+2026-11-19 15:11:47 | INFO    | mo433.data                   | views.npy já existe — pulando geração de views.
+2026-11-19 15:11:53 | INFO    | mo433.cli                    | Transformação de treino:
+Compose(
+      RandomResizedCrop(size=(96, 96), scale=(0.2, 1.0), ratio=(0.75, 1.3333333333333333), interpolation=InterpolationMode.BILINEAR, antialias=True)
+      RandomHorizontalFlip(p=0.5)
+      RandomVerticalFlip(p=0.0)
+      <lightly.transforms.rotation.RandomRotate object at 0x00000225DF5367B0>
+      RandomApply(    ColorJitter(brightness=(0.6, 1.4), contrast=(0.6, 1.4), saturation=(0.8, 1.2), hue=(-0.1, 0.1)))
+      RandomGrayscale(p=0.2)
+      <lightly.transforms.solarize.RandomSolarization object at 0x00000225DF536BA0>
+      <lightly.transforms.gaussian_blur.GaussianBlur object at 0x00000225DF536CF0>
+      ToTensor(Compose(
+        ToImage()
+        ToDtype(scale=True)
+  ))
+)
+2026-11-19 15:11:53 | INFO    | mo433.cli                    | Etapa 'prepare' concluída.

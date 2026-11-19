@@ -1,0 +1,5 @@
+2026-11-19 17:56:11 | INFO    | mo433.report                 | ==========================================================================================
+2026-11-19 17:56:11 | INFO    | mo433.report                 | Início da etapa 'report' (pid=24808)
+2026-11-19 17:56:11 | INFO    | mo433.report                 | Linha de comando: C:\Users\felip\OneDrive\Desktop\Arquivos\Projetos\UnsupervisedLearning\projeto\mo433_projeto_final\src\mo433_projeto_final\__main__.py all --dataset stl10
+2026-11-19 17:56:16 | INFO    | mo433.report                 | Relatório gerado em C:\Users\felip\OneDrive\Desktop\Arquivos\Projetos\UnsupervisedLearning\projeto\mo433_projeto_final\results\stl10
+2026-11-19 17:56:16 | INFO    | mo433.cli                    | Etapa 'report' concluída.

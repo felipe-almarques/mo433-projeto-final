@@ -1,0 +1,49 @@
+{
+  "dataset": "stl10",
+  "img_size": 96,
+  "n_unlabeled": 20000,
+  "test_fraction": 0.2,
+  "split_seed": 0,
+  "n_views": 6,
+  "min_scale": 0.2,
+  "epochs": 100,
+  "batch_size": 256,
+  "lr": 0.001,
+  "weight_decay": 0.05,
+  "warmup_epochs": 3,
+  "vicreg_hidden": 2048,
+  "vicreg_out": 2048,
+  "distill_hidden": 2048,
+  "lr_B": 0.002,
+  "lr_C": 0.002,
+  "student_sizes": {
+    "small": 0.5,
+    "large": 1.5
+  },
+  "seeds": {
+    "small": [
+      0,
+      1,
+      2
+    ],
+    "large": [
+      0,
+      1
+    ]
+  },
+  "teacher_name": "vit_small_patch16_224.dino",
+  "teacher_res": 224,
+  "label_fractions": [
+    0.01,
+    0.1,
+    0.5,
+    1.0
+  ],
+  "n_draws": 3,
+  "rbf_max_samples": 10000,
+  "ablation_data_fractions": [
+    0.5
+  ],
+  "num_workers": 3,
+  "teacher_pretrain_gpu_hours": 2688.0
+}

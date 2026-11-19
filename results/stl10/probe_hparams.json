@@ -1,0 +1,8 @@
+{
+  "linear_C": 0.01,
+  "rbf_C": 1.0,
+  "rbf_gamma_mult": 1.0,
+  "cv_linear_acc": 0.6530009724345647,
+  "cv_rbf_acc": 0.6868018953232163,
+  "reference_encoder": "B_small_seed0"
+}
